@@ -78,6 +78,36 @@ function sortCandidatesIntoIssues() {
     return data;
 }
 
+function prepDataForRadarCharts() {
+    var chartsData = {};
+    var issues = Object.keys(data.issues);
+
+    data.candidates.forEach(function(candidate) {
+        chartsData[candidate.candidate] = [];
+
+        issues.forEach(function(issue) {
+            if (candidate[issue]) {
+                chartsData[candidate.candidate].push({
+                    axis: issue,
+                    value: calculateChartValue(issue, candidate[issue])
+                })
+            }
+        }.bind(this));
+    }.bind(this));
+
+    data.candidates = chartsData;
+
+    return data;
+}
+
+function calculateChartValue(issue, value) {
+    var values = Object.keys(data.issues[issue].groups)
+    var total = values.length;
+    var place = values.indexOf(value);
+
+    return Math.abs((place / total) - 1);
+}
+
 function appendConfigDrivenData(config) {
     data.path = config.absolutePath
     data.isLocal = !config.specs.deploy;
@@ -96,6 +126,7 @@ module.exports = function getData(config) {
             data = sortResults();
             data = sortIssues();
             data = sortCandidatesIntoIssues();
+            data = prepDataForRadarCharts();
             // call additional data cleaning functions here
 
             isDone = true;

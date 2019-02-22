@@ -2,6 +2,7 @@ node_modules/
 bower_components/
 .build/
 .deploy/
+.charts/
 .local/
 yarn.lock
 .DS_Store

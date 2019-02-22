@@ -158,8 +158,10 @@
     }
 
     @include mq(desktop) {
-        top: 2px;
-        left: 16px;
+        top: -9px;
+        left: 24px;
+        background-color: $c-white;
+        padding: 0 4px;
     }
 }
 
@@ -172,7 +174,7 @@
 
     @include mq(desktop) {
         left: auto;
-        right: 16px;
+        right: 24px;
     }
 }
 

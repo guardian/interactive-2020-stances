@@ -53,7 +53,7 @@ function sortIssues() {
         for (var i = 0; 5 > i; i++) {
             if (issue['group' + i]) {
                 issues[camelCase(issue.issue)].groups[issue['group' + i]] = {
-                    'name': issue['group' + i],
+                    'title': issue['group' + i],
                     'description': issue['group' + i + 'Description'],
                     'candidates': []
                 };

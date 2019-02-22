@@ -1,7 +1,41 @@
 <div class='uit-issues'>
     <div class='uit-container'>
         {{#each issues}}
-            {{ title }}
+            <div class='uit-issue uit-issue--{{ @index }}'>
+                <div class='uit-issue__header'>
+                    <h3 class='uit-issue__title'>{{ title }}</h3>
+                    <p class='uit-issue__description'>{{ description }}</p>
+                </div>
+
+                <div class='uit-issue__groups'>
+                    {{#each groups}}
+                        <div class='uit-issue__group uit-issue__group--{{ @index }} {{#if @last}}uit-issue__group--last{{/if}}'>
+                            <div class='uit-issue__group-descriptions'>
+                                <h3 class='uit-issue__group-description__title'>{{ title }}</h3>
+                                <p class='uit-issue__group-description__description'>{{ description }}</p>
+                            </div>
+                            <div class='uit-issue__rule'>
+                                {{#if_eq @../index '0'}}
+                                    {{#if_eq @index '0'}}
+                                        <div class='uit-issue__rule-label'>More Progressive</div>
+                                    {{/if_eq}}
+                                    {{#if @last}}
+                                        <div class='uit-issue__rule-label uit-issue__rule-label--last'>More centrist</div>
+                                    {{/if}}
+                                {{/if_eq}}
+
+                            </div>
+                            <div class='uit-issue__candidiates'>
+                                {{#each candidates}}
+                                    <div class='uit-issue__candidate'>
+                                        <img class='uit-issue__candidiate-image' src='{{ ../../../path }}/assets/images/{{ handlise candidate }}.png' />
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
         {{/each}}
     </div>
 </div>

@@ -1,0 +1,114 @@
+.uit-issue {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.uit-issue__header {
+    margin-bottom: 12px;
+}
+
+.uit-issue__title {
+    font-family: 'Guardian Egyptian Web';
+    font-size: 22px;
+    font-weight: 700;
+    color: $c-red;
+    margin: 0;
+}
+
+.uit-issue__description,
+.uit-issue__group-description__description {
+    font-family: 'Guardian Text Egyptian Web';
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0;
+}
+
+.uit-issue__group {
+    position: relative;
+    padding-left: 40px;
+    padding-bottom: 18px;
+}
+
+.uit-issue__rule {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 1px;
+    height: 100%;
+    background-color: $c-black;
+
+    .uit-issue__group--0 & {
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -6px;
+            right: 0;
+            margin: auto;
+            width: 0;
+            height: 0;
+            border-bottom: 9px solid $c-black;
+            border-left: 7px solid transparent;
+            border-right: 6px solid transparent;
+        }
+    }
+
+    .uit-issue__group--last & {
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -6px;
+            right: 0;
+            margin: auto;
+            width: 0;
+            height: 0;
+            border-top: 9px solid $c-black;
+            border-left: 7px solid transparent;
+            border-right: 6px solid transparent;
+        }
+    }
+}
+
+.uit-issue__rule-label {
+    font-family: 'Guardian Sans Web';
+    font-size: 14px;
+    color: $c-black;
+    position: absolute;
+    top: 57px;
+    left: -60px;
+    transform: rotate(-90deg);
+    white-space: nowrap;
+}
+
+.uit-issue__rule-label--last {
+    transform: rotate(-90deg);
+    top: auto;
+    bottom: 43px;
+    left: -49px;
+}
+
+.uit-issue__group-description__title {
+    font-family: 'Guardian Egyptian Web';
+    font-size: 18px;
+    font-weight: 700;
+    color: $c-black;
+    margin: 0;
+}
+
+.uit-issue__candidiates {
+    overflow: auto;
+    margin-top: 4px;
+}
+
+.uit-issue__candidate {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    background-color: $c-light-red;
+    overflow: auto;
+    float: left;
+    margin-right: 8px;
+}

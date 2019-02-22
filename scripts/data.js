@@ -68,7 +68,6 @@ function sortIssues() {
 function sortCandidatesIntoIssues() {
     data.candidates.forEach(function(candidate) {
         for (var key in candidate) {
-            console.log(data.issues[key])
             if (data.issues[key]) {
                 data.issues[key].groups[candidate[key]].candidates.push(candidate.candidate);
             }
@@ -98,8 +97,6 @@ module.exports = function getData(config) {
             data = sortIssues();
             data = sortCandidatesIntoIssues();
             // call additional data cleaning functions here
-
-            console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

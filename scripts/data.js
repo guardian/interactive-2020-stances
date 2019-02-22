@@ -3,6 +3,7 @@ var fs = require('fs-extra');
 var gsjson = require('google-spreadsheet-to-json');
 var deasync = require('deasync');
 var userHome = require('user-home');
+var camelCase = require('camelcase');
 
 var data;
 
@@ -29,10 +30,51 @@ function sortResults() {
         data = data[0]
     } else {
         data = {
-            'sheet1': data[0],
-            'sheet2': data[1]
+            'issues': data[0],
+            'candidates': data[1]
         }
     }
+
+    return data;
+}
+
+function sortIssues() {
+    var issues = {};
+
+    for (var i in data.issues) {
+        var issue = data.issues[i];
+
+        issues[camelCase(issue.issue)] = {
+            'title': issue.issue,
+            'description': issue.description,
+            'groups': {}
+        };
+
+        for (var i = 0; 5 > i; i++) {
+            if (issue['group' + i]) {
+                issues[camelCase(issue.issue)].groups[issue['group' + i]] = {
+                    'name': issue['group' + i],
+                    'description': issue['group' + i + 'Description'],
+                    'candidates': []
+                };
+            }
+        }
+    }
+
+    data.issues = issues;
+    return data;
+}
+
+function sortCandidatesIntoIssues() {
+    data.candidates.forEach(function(candidate) {
+        for (var key in candidate) {
+            console.log(data.issues[key])
+            if (data.issues[key]) {
+                data.issues[key].groups[candidate[key]].candidates.push(candidate.candidate);
+            }
+        }
+
+    });
 
     return data;
 }
@@ -53,7 +95,11 @@ module.exports = function getData(config) {
         fetchData(config.data.id, function(result) {
             data = result;
             data = sortResults();
+            data = sortIssues();
+            data = sortCandidatesIntoIssues();
             // call additional data cleaning functions here
+
+            console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

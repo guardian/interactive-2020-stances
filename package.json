@@ -14,7 +14,7 @@
     },
     "config": {
         "data": {
-            "id": ""
+            "id": "1ENAK26SeXoSeRrm_ksgD-dLcw9dtTRH6WZUJsYmtM4Y"
         },
         "local": {
             "url": "http://localhost",
@@ -22,7 +22,7 @@
         },
         "remote": {
             "url": "https://interactive.guim.co.uk",
-            "path": "atoms/2018/01/us-interactive-template",
+            "path": "atoms/2019/02/2020-stances",
             "bucket": "gdn-cdn"
         }
     },
@@ -40,6 +40,7 @@
         "aws-sdk": "^2.5.0",
         "browser-sync": "^2.24.6",
         "browser-sync-reuse-tab": "^1.0.3",
+        "camelcase": "^5.0.0",
         "deasync": "^0.1.9",
         "emojic": "^1.1.14",
         "filesize": "^3.3.0",

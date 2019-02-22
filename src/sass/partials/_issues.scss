@@ -1,10 +1,39 @@
 .uit-issue {
+    position: relative;
     display: block;
-    margin-bottom: 12px;
+    padding-bottom: 12px;
+    max-width: 620px;
+
+    @include mq(desktop) {
+        max-width: none;
+        padding-bottom: 48px;
+    }
+
+    @include mq(leftCol) {
+        margin-left: 160px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            left: -10px;
+            background-color: $c-light-grey;
+        }
+    }
+
+    @include mq(wide) {
+        margin-left: 240px;
+    }
 }
 
 .uit-issue__header {
     margin-bottom: 12px;
+
+    @include mq(desktop) {
+        max-width: 420px;
+    }
 }
 
 .uit-issue__title {
@@ -23,50 +52,94 @@
     margin: 0;
 }
 
+.uit-issue__groups {
+    @include mq(desktop) {
+        display: flex;
+    }
+}
+
 .uit-issue__group {
     position: relative;
     padding-left: 40px;
     padding-bottom: 18px;
+
+    @include mq(desktop) {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        flex: 1 1 0;
+        padding-left: 0;
+    }
 }
 
 .uit-issue__rule {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 20px;
-    width: 1px;
-    height: 100%;
     background-color: $c-black;
 
-    .uit-issue__group--0 & {
+    @include mq($until: desktop) {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        width: 1px;
+        height: 100%;
+    }
+
+    @include mq(desktop) {
+        position: relative;
+        width: 100%;
+        height: 1px;
+        margin: 24px 0;
+    }
+
+    .uit-issue__group--0 &,
+    .uit-issue__group--last & {
         &:before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -6px;
-            right: 0;
             margin: auto;
             width: 0;
             height: 0;
-            border-bottom: 9px solid $c-black;
-            border-left: 7px solid transparent;
-            border-right: 6px solid transparent;
+
+            @include mq($until: desktop) {
+                left: -6px;
+                right: 0;
+                border-left: 7px solid transparent;
+                border-right: 6px solid transparent;
+            }
+
+            @include mq(desktop) {
+                top: -6px;
+                border-top: 7px solid transparent;
+                border-bottom: 6px solid transparent;
+            }
+        }
+    }
+
+    .uit-issue__group--0 & {
+        &:before {
+            @include mq($until: desktop) {
+                top: 0;
+                border-bottom: 9px solid $c-black;
+            }
+
+            @include mq(desktop) {
+                left: 0;
+                border-right: 9px solid $c-black;
+            }
         }
     }
 
     .uit-issue__group--last & {
         &:before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -6px;
-            right: 0;
-            margin: auto;
-            width: 0;
-            height: 0;
-            border-top: 9px solid $c-black;
-            border-left: 7px solid transparent;
-            border-right: 6px solid transparent;
+            @include mq($until: desktop) {
+                bottom: 0;
+                border-top: 9px solid $c-black;
+            }
+
+            @include mq(desktop) {
+                right: 0;
+                border-left: 9px solid $c-black;
+            }
         }
     }
 }
@@ -76,17 +149,37 @@
     font-size: 14px;
     color: $c-black;
     position: absolute;
-    top: 57px;
-    left: -60px;
-    transform: rotate(-90deg);
     white-space: nowrap;
+
+    @include mq($until: desktop) {
+        top: 57px;
+        left: -60px;
+        transform: rotate(-90deg);
+    }
+
+    @include mq(desktop) {
+        top: 2px;
+        left: 16px;
+    }
 }
 
 .uit-issue__rule-label--last {
-    transform: rotate(-90deg);
-    top: auto;
-    bottom: 43px;
-    left: -49px;
+    @include mq($until: desktop) {
+        top: auto;
+        bottom: 43px;
+        left: -49px;
+    }
+
+    @include mq(desktop) {
+        left: auto;
+        right: 16px;
+    }
+}
+
+.uit-issue__group-descriptions {
+    @include mq(desktop) {
+        padding-right: 20px;
+    }
 }
 
 .uit-issue__group-description__title {

@@ -3,13 +3,14 @@ var D3Node = require('d3-node');
 
 var options = {
     radius: 5,
-    width: 600,
-    height: 600,
+    width: 400,
+    height: 400,
     factor: 1,
     factorLegend: .85,
     levels: 3,
     maxValue: 2,
-    radians: 2 * Math.PI
+    radians: 2 * Math.PI,
+    pointRadius: 6
 }
 
 module.exports = {
@@ -43,21 +44,6 @@ module.exports = {
         var total = allAxis.length;
         var radius = options.factor * Math.min(options.width / 2, options.height / 2);
 
-        var axis = svg.selectAll('.axis')
-            .data(allAxis)
-            .enter()
-            .append('g')
-            .attr('class', 'axis');
-
-        axis.append('line')
-            .attr('x1', options.width / 2)
-            .attr('y1', options.height / 2)
-            .attr('x2', function(d, i) { return options.width / 2 * (1-options.factor * Math.sin(i * options.radians / total)) })
-            .attr('y2', function(d, i) { return options.height / 2 * (1-options.factor * Math.cos(i * options.radians / total)) })
-            .attr('class', 'line')
-            .style('stroke', 'grey')
-            .style('stroke-width', '1px');
-
         var dataValues = []
 
         data.forEach(function(j, i) {
@@ -69,13 +55,24 @@ module.exports = {
 
         dataValues.push(dataValues[0]);
 
-        svg.selectAll('.area')
+        svg.append('defs')
+            .append('marker')
+            .attr('id', 'arrow')
+            .attr('viewbox', '0 0 10 10')
+            .attr('refX', 0)
+            .attr('refY', 5)
+            .attr('markerWidth', 6)
+            .attr('markerHeight', 6)
+            .attr('orient', 'auto')
+            .append('path')
+                .attr('d', "M 0 0 L 10 5 L 0 10 z")
+                .attr("class","uit-radar__arrow");
+
+        svg.selectAll('.uit-radar__area')
             .data([dataValues])
             .enter()
             .append('polygon')
-            .attr('class', 'radar-chart')
-            .style('stroke-width', '2px')
-            .style('stroke', '#FFBB00')
+            .attr('class', 'uit-radar__area')
             .attr('points', function(d) {
                 console.log('drawing points');
                 var str = '';
@@ -83,9 +80,29 @@ module.exports = {
                     str = str + d[i][0] + ',' + d[i][1] + ' ';
                 }
                 return str;
-            })
-            .style('fill', 'red')
+            });
 
+        var axis = svg.selectAll('.uit-radar__axis')
+            .data(allAxis)
+            .enter()
+            .append('g')
+            .attr('class', 'uit-radar__axis');
+
+        axis.append('line')
+            .attr('x1', options.width / 2)
+            .attr('y1', options.height / 2)
+            .attr('x2', function(d, i) { return options.width / 2 * (1-options.factor * Math.sin(i * options.radians / total)) })
+            .attr('y2', function(d, i) { return options.height / 2 * (1-options.factor * Math.cos(i * options.radians / total)) })
+            .attr('class', 'uit-radar__guideline');
+
+        svg.selectAll('.uit-radar__point')
+            .data(dataValues)
+            .enter()
+            .append('circle')
+            .attr('cx', function(d, i) { return d[0] })
+            .attr('cy', function(d, i) { return d[1] })
+            .attr('r', options.pointRadius)
+            .attr('class', 'uit-radar__point');
 
         fs.mkdirsSync('./.charts');
         fs.writeFileSync('./.charts/' + this.handlise(candidate) + '.svg', d3n.svgString());

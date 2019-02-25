@@ -1,3 +1,24 @@
 .uit-radar {
     width: 100%;
 }
+
+.uit-radar__area {
+    fill: $c-light-red;
+    opacity: 0.8;
+}
+
+.uit-radar__guideline {
+    stroke: $c-black;
+    stroke-width: 2px;
+    marker-end: url('#arrow')
+}
+
+.uit-radar__arrow {
+    fill: $c-black;
+}
+
+.uit-radar__point {
+    fill: $c-red;
+    stroke: $c-white;
+    stroke-width: 2px;
+}

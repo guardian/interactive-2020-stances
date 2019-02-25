@@ -89,7 +89,7 @@ function prepDataForRadarCharts() {
             if (candidate[issue]) {
                 chartsData[candidate.candidate].push({
                     axis: issue,
-                    value: calculateChartValue(issue, candidate[issue]) + 1
+                    value: calculateChartValue(issue, candidate[issue])
                 })
             }
         }.bind(this));
@@ -105,7 +105,7 @@ function calculateChartValue(issue, value) {
     var total = values.length;
     var place = values.indexOf(value);
 
-    return Math.abs((place / total) - 1);
+    return Math.abs((place / total) - 1) + 1;
 }
 
 function appendConfigDrivenData(config) {
@@ -128,6 +128,8 @@ module.exports = function getData(config) {
             data = sortCandidatesIntoIssues();
             data = prepDataForRadarCharts();
             // call additional data cleaning functions here
+
+            // console.log(data);
 
             isDone = true;
         });

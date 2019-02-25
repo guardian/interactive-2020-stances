@@ -6,9 +6,8 @@ var options = {
     width: 400,
     height: 400,
     factor: 1,
-    factorLegend: .85,
-    levels: 3,
-    maxValue: 2,
+    factorLegend: 1.2,
+    maxValue: 2.2,
     radians: 2 * Math.PI,
     pointRadius: 6,
     margin: 80
@@ -98,8 +97,8 @@ module.exports = {
 
         axis.append('text')
             .text(function(d) { return d.title; })
-            .attr('x', function(d, i) { return options.width / 2 * (1-1.2 * Math.sin(i * options.radians / total)) })
-            .attr('y', function(d, i) { return options.height / 2 * (1-1.2 * Math.cos(i * options.radians / total)) })
+            .attr('x', function(d, i) { return options.width / 2 * (1-options.factorLegend * Math.sin(i * options.radians / total)) })
+            .attr('y', function(d, i) { return options.height / 2 * (1-options.factorLegend * Math.cos(i * options.radians / total)) })
             .attr('class', 'uit-radar__axis-label')
 
         svg.selectAll('.uit-radar__point')

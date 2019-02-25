@@ -7,7 +7,7 @@ var options = {
     height: 400,
     factor: 1,
     factorLegend: 1.2,
-    maxValue: 2.2,
+    maxValue: 1.9,
     radians: 2 * Math.PI,
     pointRadius: 6,
     margin: 80
@@ -25,14 +25,14 @@ module.exports = {
 
         candidates.forEach(function(candidate) {
             if (Object.keys(data.candidates[candidate]).length > 0) {
-                this.createChart(candidate, data.candidates[candidate]);
+                this.createChart(candidate, data.candidates[candidate], data);
             } else {
                 console.log('insufficient data for ' + candidate);
             }
         }.bind(this));
     },
 
-    createChart: function(candidate, data) {
+    createChart: function(candidate, data, fullData) {
         var d3n = new D3Node();
         var d3 = d3n.d3;
         var svg = d3n.createSVG()
@@ -101,12 +101,18 @@ module.exports = {
             .attr('y', function(d, i) { return options.height / 2 * (1-options.factorLegend * Math.cos(i * options.radians / total)) })
             .attr('class', 'uit-radar__axis-label')
 
+
+        dataValues = dataValues.filter(function(item, pos) {
+            return dataValues.indexOf(item) == pos;
+        })
+
         svg.selectAll('.uit-radar__point')
             .data(dataValues)
             .enter()
             .append('circle')
             .attr('cx', function(d, i) { return d[0] })
             .attr('cy', function(d, i) { return d[1] })
+            .attr('data-group', function(d, i) { if (data[i]) { return data[i].group } })
             .attr('r', options.pointRadius)
             .attr('class', 'uit-radar__point');
 

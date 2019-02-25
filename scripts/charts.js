@@ -112,9 +112,18 @@ module.exports = {
             .append('circle')
             .attr('cx', function(d, i) { return d[0] })
             .attr('cy', function(d, i) { return d[1] })
-            .attr('data-group', function(d, i) { if (data[i]) { return data[i].group } })
             .attr('r', options.pointRadius)
             .attr('class', 'uit-radar__point');
+
+        svg.selectAll('.uit-radar__point-hotspot')
+            .data(dataValues)
+            .enter()
+            .append('circle')
+            .attr('cx', function(d, i) { return d[0] })
+            .attr('cy', function(d, i) { return d[1] })
+            .attr('data-group', function(d, i) { if (data[i]) { return data[i].group } })
+            .attr('r', options.pointRadius * 2.5)
+            .attr('class', 'uit-radar__point-hotspot');
 
         fs.mkdirsSync('./.charts');
         fs.writeFileSync('./.charts/' + this.handlise(candidate) + '.svg', d3n.svgString());

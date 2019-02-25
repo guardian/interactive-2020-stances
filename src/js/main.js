@@ -3,5 +3,7 @@ import jquery from 'jquery';
 window.$ = jquery;
 
 import share from './modules/share.js';
+import hover from './modules/hover.js';
 
 share.init();
+hover.init();

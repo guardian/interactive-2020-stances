@@ -28,8 +28,33 @@
     margin: auto;
     max-width: 35%;
     max-height: 35%;
+    pointer-events: none;
 }
 
 .uit-candidates__radar {
     width: 100%;
+}
+
+.uit-candidates__tooltip {
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+    transform: translateY(20px);
+    box-shadow: 2px 2px $c-black;
+    opacity: 0;
+    background-color: $c-white;
+    border: 1px solid $c-black;
+    padding: 6px;
+    transition: opacity 0.5 linear;
+    width: 240px;
+
+    &.is-visible {
+        opacity: 1;
+    }
+}
+
+.uit-candidates__tooltip-label {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 700;
+    color: $c-black;
 }

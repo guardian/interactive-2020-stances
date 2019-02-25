@@ -34,11 +34,9 @@ module.exports = {
     createChart: function(candidate, data) {
         var d3n = new D3Node();
         var d3 = d3n.d3;
-        var svg = d3n.createSVG(options.width, options.height)
+        var svg = d3n.createSVG()
             .attr('class', 'uit-radar')
             .attr('viewBox', '0 0 ' + options.width + ' ' + options.height)
-            .attr('width', 'auto')
-            .attr('height', 'auto')
             .append('g');
 
         var allAxis = (data.map(function(i, j) { return i.area }));

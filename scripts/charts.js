@@ -8,7 +8,7 @@ var options = {
     factor: 1,
     factorLegend: .85,
     levels: 3,
-    maxValue: 1,
+    maxValue: 2,
     radians: 2 * Math.PI
 }
 

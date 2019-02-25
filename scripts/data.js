@@ -89,7 +89,7 @@ function prepDataForRadarCharts() {
             if (candidate[issue]) {
                 chartsData[candidate.candidate].push({
                     axis: issue,
-                    value: calculateChartValue(issue, candidate[issue])
+                    value: calculateChartValue(issue, candidate[issue]) + 1
                 })
             }
         }.bind(this));

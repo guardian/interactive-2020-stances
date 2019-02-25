@@ -20,13 +20,15 @@ browserSync.watch('./.build/*.css', function(event, file) {
 });
 
 // watch src files
-watch('src', function(file) {
+watch(['src', 'scripts'], function(file) {
     var fileExt = file.substring(file.lastIndexOf('.') + 1);
     var isAssets = file.includes('/assets/');
 
     if (isAssets) {
         console.log('updating static assets');
         cmd.get('npm run compile -- local static', function(data) { console.log(data); });
+    } else if (file.includes('charts.js')) {
+        cmd.get('npm run compile -- local html', function(data) { console.log(data); });
     } else if (fileExt === 'html' || fileExt === 'svg') {
         console.log('updating html');
         cmd.get('npm run compile -- local html', function(data) { console.log(data); });

@@ -13,6 +13,12 @@
     position: relative;
 }
 
+.uit-candidates__label {
+    font-family: 'Guardian Egyptian Web';
+    font-size: 22px;
+    font-weight: 700;
+}
+
 .uit-candidates__face {
     position: absolute;
     top: 0;
@@ -20,7 +26,8 @@
     bottom: 0;
     left: 0;
     margin: auto;
-    max-width: 40%;
+    max-width: 35%;
+    max-height: 35%;
 }
 
 .uit-candidates__radar {

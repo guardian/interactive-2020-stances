@@ -10,7 +10,8 @@ var options = {
     levels: 3,
     maxValue: 2,
     radians: 2 * Math.PI,
-    pointRadius: 6
+    pointRadius: 6,
+    margin: 80
 }
 
 module.exports = {
@@ -37,10 +38,11 @@ module.exports = {
         var d3 = d3n.d3;
         var svg = d3n.createSVG()
             .attr('class', 'uit-radar')
-            .attr('viewBox', '0 0 ' + options.width + ' ' + options.height)
-            .append('g');
+            .attr('viewBox', '0 0 ' + (options.width + (options.margin * 2)) + ' ' + (options.height + (options.margin * 2)))
+            .append('g')
+            .attr('transform', 'translate(' + options.margin + ',' + options.margin + ')')
 
-        var allAxis = (data.map(function(i, j) { return i.area }));
+        var allAxis = (data.map(function(i, j) { return i }));
         var total = allAxis.length;
         var radius = options.factor * Math.min(options.width / 2, options.height / 2);
 
@@ -74,7 +76,6 @@ module.exports = {
             .append('polygon')
             .attr('class', 'uit-radar__area')
             .attr('points', function(d) {
-                console.log('drawing points');
                 var str = '';
                 for (var i = 0; d.length > i; i++) {
                     str = str + d[i][0] + ',' + d[i][1] + ' ';
@@ -94,6 +95,12 @@ module.exports = {
             .attr('x2', function(d, i) { return options.width / 2 * (1-options.factor * Math.sin(i * options.radians / total)) })
             .attr('y2', function(d, i) { return options.height / 2 * (1-options.factor * Math.cos(i * options.radians / total)) })
             .attr('class', 'uit-radar__guideline');
+
+        axis.append('text')
+            .text(function(d) { return d.title; })
+            .attr('x', function(d, i) { return options.width / 2 * (1-1.2 * Math.sin(i * options.radians / total)) })
+            .attr('y', function(d, i) { return options.height / 2 * (1-1.2 * Math.cos(i * options.radians / total)) })
+            .attr('class', 'uit-radar__axis-label')
 
         svg.selectAll('.uit-radar__point')
             .data(dataValues)

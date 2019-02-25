@@ -4,6 +4,7 @@ var gsjson = require('google-spreadsheet-to-json');
 var deasync = require('deasync');
 var userHome = require('user-home');
 var camelCase = require('camelcase');
+var decamelize = require('decamelize');
 
 var data;
 
@@ -89,7 +90,8 @@ function prepDataForRadarCharts() {
             if (candidate[issue]) {
                 chartsData[candidate.candidate].push({
                     axis: issue,
-                    value: calculateChartValue(issue, candidate[issue])
+                    value: calculateChartValue(issue, candidate[issue]),
+                    title: data.issues[issue].title
                 })
             }
         }.bind(this));

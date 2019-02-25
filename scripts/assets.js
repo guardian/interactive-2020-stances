@@ -159,6 +159,16 @@ module.exports = {
             handlebars.registerPartial(name, template);
         });
 
+        handlebars.registerHelper('graphic', function(name) {
+            var fileName = '.charts/' + name.replace(/ /g, '-').toLowerCase() + '.svg';
+
+            if (fs.existsSync(fileName)) {
+                return fs.readFileSync(fileName, 'utf8')
+            } else {
+                return 'No Graphic';
+            }
+        });
+
         fs.writeFileSync(config.path + '/main.html', template(config.data));
         console.log('Updated html!');
     },

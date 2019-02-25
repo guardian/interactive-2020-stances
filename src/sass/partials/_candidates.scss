@@ -1,0 +1,29 @@
+.uit-candidates__candidates {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.uit-candidates__candidate {
+    flex: 1 1 0;
+    width: calc(33% - 20px);
+    margin-right: 20px;
+}
+
+.uit-candidates__chart {
+    position: relative;
+}
+
+.uit-candidates__face {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-width: 40%;
+}
+
+.uit-candidates__radar {
+    width: 100%;
+}

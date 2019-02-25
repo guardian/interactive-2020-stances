@@ -28,7 +28,7 @@ module.exports = {
             } else {
                 console.log('insufficient data for ' + candidate);
             }
-        }.bind(this))
+        }.bind(this));
     },
 
     createChart: function(candidate, data) {

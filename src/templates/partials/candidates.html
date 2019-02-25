@@ -1,0 +1,18 @@
+<div class='uit-candidates'>
+    <div class='uit-container'>
+
+        <div class='uit-candidates__candidates'>
+        {{#each candidates}}
+            <div class='uit-candidates__candidate'>
+                <h3 class='uit-candidates__label'>{{ @key }}</h3>
+                <div class='uit-candidates__chart'>
+                    <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise @key }}.png' />
+                    {{{ graphic @key }}}
+                    <img class='uit-candidates__radar' src='{{ ../path }}/assets/graphics/{{ handlise @key }}.svg' />
+                </div>
+            </div>
+        {{/each}}
+        </div>
+        </div>
+    </div>
+</div>

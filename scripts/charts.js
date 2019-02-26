@@ -121,7 +121,10 @@ module.exports = {
             .append('circle')
             .attr('cx', function(d, i) { return d[0] })
             .attr('cy', function(d, i) { return d[1] })
-            .attr('data-group', function(d, i) { if (data[i]) { return data[i].group } })
+            .attr('data-group', function(d, i) { return data[i].group })
+            .attr('data-candidate', candidate)
+            .attr('data-issue', function(d, i) { return data[i].title })
+            .attr('data-value', function(d, i) { return data[i].value })
             .attr('r', options.pointRadius * 2.5)
             .attr('class', 'uit-radar__point-hotspot');
 

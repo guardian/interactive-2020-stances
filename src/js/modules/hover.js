@@ -25,9 +25,12 @@ export default {
     },
 
     showToolTipFor: function(el) {
-        var text = $(el).attr('data-group');
+        var data = $(el).data();
 
-        $('.uit-candidates__tooltip-label').text(text);
+        $('.uit-candidates__tooltip-label').text(data.group);
+        $('.uit-candidates__description-name').text(data.candidate);
+        $('.uit-candidates__description-issue').text(data.issue);
+        $('.uit-candidates__description-value').text(this.convertValueToString(data.value));
 
         var pointPosition = el.getBoundingClientRect();
         var tooltipLeft;
@@ -44,5 +47,17 @@ export default {
         $(el).one('mouseout', function() {
             $('.uit-candidates__tooltip').removeClass('is-visible');
         });
+    },
+
+    convertValueToString: function(value) {
+        value = parseFloat(value);
+
+        if (value >= 1.7) {
+            return 'the most progressive group';
+        } else if (value <= 1.2) {
+            return 'the most moderate group';
+        } else {
+            return 'one of the in-betweenie groups';
+        }
     }
 };

@@ -23,16 +23,16 @@ module.exports = {
 
         var candidates = Object.keys(data.candidates);
 
-        candidates.forEach(function(candidate) {
+        candidates.forEach(function(candidate, i) {
             if (Object.keys(data.candidates[candidate]).length > 0) {
-                this.createChart(candidate, data.candidates[candidate], data);
+                this.createChart(candidate, data.candidates[candidate], data, i);
             } else {
                 console.log('insufficient data for ' + candidate);
             }
         }.bind(this));
     },
 
-    createChart: function(candidate, data, fullData) {
+    createChart: function(candidate, data, fullData, i) {
         var d3n = new D3Node();
         var d3 = d3n.d3;
         var svg = d3n.createSVG()
@@ -95,12 +95,13 @@ module.exports = {
             .attr('y2', function(d, i) { return options.height / 2 * (1-options.factor * Math.cos(i * options.radians / total)) })
             .attr('class', 'uit-radar__guideline');
 
+        if (i === 0) {
         axis.append('text')
             .text(function(d) { return d.title; })
             .attr('x', function(d, i) { return options.width / 2 * (1-options.factorLegend * Math.sin(i * options.radians / total)) })
             .attr('y', function(d, i) { return options.height / 2 * (1-options.factorLegend * Math.cos(i * options.radians / total)) })
             .attr('class', 'uit-radar__axis-label')
-
+        }
 
         dataValues = dataValues.filter(function(item, pos) {
             return dataValues.indexOf(item) == pos;

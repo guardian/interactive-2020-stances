@@ -107,19 +107,13 @@ module.exports = {
             return dataValues.indexOf(item) == pos;
         })
 
-        svg.selectAll('.uit-radar__point')
+        var point = svg.selectAll('.uit-radar__point')
             .data(dataValues)
             .enter()
-            .append('circle')
-            .attr('cx', function(d, i) { return d[0] })
-            .attr('cy', function(d, i) { return d[1] })
-            .attr('r', options.pointRadius)
+            .append('g')
             .attr('class', 'uit-radar__point');
 
-        svg.selectAll('.uit-radar__point-hotspot')
-            .data(dataValues)
-            .enter()
-            .append('circle')
+        point.append('circle')
             .attr('cx', function(d, i) { return d[0] })
             .attr('cy', function(d, i) { return d[1] })
             .attr('data-group', function(d, i) { return data[i].group })
@@ -128,6 +122,12 @@ module.exports = {
             .attr('data-value', function(d, i) { return data[i].value })
             .attr('r', options.pointRadius * 2.5)
             .attr('class', 'uit-radar__point-hotspot');
+
+        point.append('circle')
+            .attr('cx', function(d, i) { return d[0] })
+            .attr('cy', function(d, i) { return d[1] })
+            .attr('r', options.pointRadius)
+            .attr('class', 'uit-radar__marker');
 
         fs.mkdirsSync('./.charts');
         fs.writeFileSync('./.charts/' + this.handlise(candidate) + '.svg', d3n.svgString());

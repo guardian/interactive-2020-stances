@@ -3,28 +3,34 @@
 }
 
 .uit-radar__area {
-    fill: $c-light-red;
-    opacity: 0.8;
+    stroke: $c-red;
+    stroke-width: 2px;
+    fill: rgba($c-red, 0.1);
 }
 
 .uit-radar__guideline {
-    stroke: $c-black;
+    stroke: $c-grey;
     stroke-width: 2px;
     marker-end: url('#arrow')
 }
 
 .uit-radar__arrow {
-    fill: $c-black;
+    fill: $c-grey;
 }
 
-.uit-radar__point {
-    fill: $c-red;
-    stroke: $c-white;
+.uit-radar__marker {
+    fill: $c-white;
+    stroke: $c-red;
     stroke-width: 2px;
+    pointer-events: none;
 }
 
 .uit-radar__point-hotspot {
     opacity: 0;
+
+    &:hover ~ .uit-radar__marker {
+        fill: $c-red;
+    }
 }
 .uit-radar__axis-label {
     font-family: 'Guardian Sans Web';

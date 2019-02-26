@@ -10,6 +10,7 @@
     }
 
     @include mq(leftCol) {
+        position: relative;
         margin-left: 160px;
 
         &:before {
@@ -199,11 +200,26 @@
 
 .uit-issue__candidate {
     position: relative;
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     border-radius: 32px;
     background-color: $c-light-red;
     overflow: auto;
     float: left;
     margin-right: 8px;
+    margin-bottom: 8px;
+
+    @include mq(tablet) {
+        width: 62px;
+        height: 62px;
+    }
+}
+
+.uit-issue__candidiate-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
 }

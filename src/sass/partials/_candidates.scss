@@ -4,6 +4,7 @@
     flex-wrap: wrap;
 
     @include mq(leftCol) {
+        position: relative;
         width: auto;
         margin-left: 160px;
 

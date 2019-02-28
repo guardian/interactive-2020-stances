@@ -10,7 +10,7 @@ var options = {
     maxValue: 1.9,
     radians: 2 * Math.PI,
     pointRadius: 6,
-    margin: 80
+    margin: 20
 }
 
 module.exports = {

@@ -5,17 +5,17 @@
 .uit-radar__area {
     stroke: $c-light-blue;
     stroke-width: 2px;
-    fill: rgba($c-light-blue, 0.2);
+    fill: #f1f8fc;
 }
 
 .uit-radar__guideline {
-    stroke: $c-grey;
+    stroke: $c-light-grey;
     stroke-width: 2px;
     marker-end: url('#arrow')
 }
 
 .uit-radar__arrow {
-    fill: $c-grey;
+    fill: $c-light-grey;
 }
 
 .uit-radar__marker {

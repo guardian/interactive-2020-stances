@@ -25,10 +25,15 @@
 }
 
 .uit-candidates__candidate {
-    width: 50%;
+    width: calc(50% - 20px);
+    padding-right: 20px;
 
     @include mq(desktop) {
-        width: 33.33333%;
+        width: 300px;
+
+        &:nth-of-type(3n+1) {
+            padding-right: 0;
+        }
     }
 }
 

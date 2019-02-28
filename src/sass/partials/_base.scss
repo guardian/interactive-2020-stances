@@ -29,21 +29,21 @@
     }
 
     @include mq(tablet) {
-        max-width: 740px;
+        max-width: 742px;
         border-left: 1px solid $c-light-grey;
         border-right: 1px solid $c-light-grey;
     }
 
     @include mq(desktop) {
-        max-width: 980px;
+        max-width: 982px;
     }
 
     @include mq(leftCol) {
-        max-width: 1140px;
+        max-width: 1142px;
     }
 
     @include mq(wide) {
-        max-width: 1300px;
+        max-width: 1302px;
     }
 }
 

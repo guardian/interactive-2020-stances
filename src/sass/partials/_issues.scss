@@ -39,7 +39,7 @@
 
 .uit-issue__title {
     font-family: 'Guardian Egyptian Web';
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
     color: $c-light-blue;
     margin: 0;
@@ -197,6 +197,9 @@
 .uit-issue__candidiates {
     overflow: auto;
     margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .uit-issue__candidate {
@@ -206,7 +209,6 @@
     border-radius: 32px;
     background-color: $c-light-blue;
     overflow: auto;
-    float: left;
     margin-right: 8px;
     margin-bottom: 8px;
 

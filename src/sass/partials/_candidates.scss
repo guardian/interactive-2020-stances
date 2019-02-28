@@ -1,7 +1,17 @@
+.uit-candidates {
+    position: relative;
+
+    .uit-content p {
+        padding-bottom: 18px;
+        margin: 0;
+    }
+}
+
 .uit-candidates__candidates {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+    padding-bottom: 60px;
 
     @include mq(leftCol) {
         position: relative;
@@ -27,11 +37,12 @@
 .uit-candidates__candidate {
     width: calc(50% - 20px);
     padding-right: 20px;
+    margin-bottom: 24px;
 
     @include mq(desktop) {
-        width: 300px;
+        width: 220px;
 
-        &:nth-of-type(3n+1) {
+        &:nth-of-type(4n+1) {
             padding-right: 0;
         }
     }
@@ -41,11 +52,16 @@
     position: relative;
 }
 
+.uit-candidates__write-up {
+    display: none;
+}
+
 .uit-candidates__label {
     font-family: 'Guardian Egyptian Web';
     font-size: 22px;
     font-weight: 600;
     padding-right: 10px;
+    margin-bottom: 1px;
 }
 
 .uit-candiates__avatar {

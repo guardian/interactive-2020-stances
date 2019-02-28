@@ -108,7 +108,7 @@ function calculateChartValue(issue, value) {
     var total = values.length;
     var place = values.indexOf(value);
 
-    return Math.abs((place / total) - 1) + .7;
+    return Math.abs((place / total) - 1) + .25;
 }
 
 function appendConfigDrivenData(config) {

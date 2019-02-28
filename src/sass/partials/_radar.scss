@@ -37,3 +37,30 @@
     font-size: 22px;
     text-anchor: middle;
 }
+
+.uit-candidates__legend {
+    width: 180px;
+
+    @include mq(leftCol) {
+        position: absolute;
+        left: -174px;
+        width: 160px;
+    }
+
+    @include mq(wide) {
+        left: -240px;
+        width: 220px;
+    }
+
+    svg {
+        @include mq(wide) {
+            max-width: 180px;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    .uit-radar__axis-label {
+        font-size: 34px;
+    }
+}

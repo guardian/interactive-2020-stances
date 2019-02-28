@@ -7,10 +7,10 @@ var options = {
     height: 400,
     factor: 1,
     factorLegend: 1.2,
-    maxValue: 1.9,
+    maxValue: 1.42,
     radians: 2 * Math.PI,
     pointRadius: 6,
-    margin: 20
+    margin: 0
 }
 
 module.exports = {
@@ -60,7 +60,7 @@ module.exports = {
             .append('marker')
             .attr('id', 'arrow')
             .attr('viewbox', '0 0 10 10')
-            .attr('refX', 0)
+            .attr('refX', 10)
             .attr('refY', 5)
             .attr('markerWidth', 6)
             .attr('markerHeight', 6)
@@ -95,7 +95,7 @@ module.exports = {
             .attr('y2', function(d, i) { return options.height / 2 * (1-options.factor * Math.cos(i * options.radians / total)) })
             .attr('class', 'uit-radar__guideline');
 
-        if (i === 0) {
+        if (i === -1) {
         axis.append('text')
             .text(function(d) { return d.title; })
             .attr('x', function(d, i) { return options.width / 2 * (1-options.factorLegend * Math.sin(i * options.radians / total)) })

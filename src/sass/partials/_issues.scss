@@ -33,7 +33,7 @@
     margin-bottom: 12px;
 
     @include mq(desktop) {
-        max-width: 420px;
+        max-width: 620px;
     }
 }
 
@@ -43,6 +43,7 @@
     font-weight: 700;
     color: $c-red;
     margin: 0;
+    margin-bottom: 3px;
 }
 
 .uit-issue__description,
@@ -67,7 +68,7 @@
     @include mq(desktop) {
         display: flex;
         flex-direction: column-reverse;
-        justify-content: flex-end;
+        justify-content: start;
         flex: 1 1 0;
         padding-left: 0;
     }

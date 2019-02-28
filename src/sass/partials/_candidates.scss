@@ -54,7 +54,7 @@
     height: 48px;
     border-radius: 32px;
     pointer-events: none;
-    background-color: $c-light-red;
+    background-color: $c-light-blue;
     overflow: hidden;
 
     @include mq(tablet) {
@@ -98,6 +98,6 @@
 
 .uit-candidates__tooltip-label {
     font-family: 'Guardian Egyptian Web';
-    font-weight: 700;
+    font-weight: 600;
     color: $c-black;
 }

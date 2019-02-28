@@ -3,9 +3,9 @@
 }
 
 .uit-radar__area {
-    stroke: $c-red;
+    stroke: $c-light-blue;
     stroke-width: 2px;
-    fill: rgba($c-red, 0.1);
+    fill: rgba($c-light-blue, 0.2);
 }
 
 .uit-radar__guideline {
@@ -20,7 +20,7 @@
 
 .uit-radar__marker {
     fill: $c-white;
-    stroke: $c-red;
+    stroke: $c-light-blue;
     stroke-width: 2px;
     pointer-events: none;
 }
@@ -29,7 +29,7 @@
     opacity: 0;
 
     &:hover ~ .uit-radar__marker {
-        fill: $c-red;
+        fill: $c-light-blue;
     }
 }
 .uit-radar__axis-label {

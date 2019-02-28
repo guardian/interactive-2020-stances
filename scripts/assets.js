@@ -96,7 +96,7 @@ module.exports = {
 
         handlebars.registerHelper('handlise', function(string) {
             if (string) {
-                return string.replace(/ /g, '-').toLowerCase();
+                return string.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /g, '-').toLowerCase();
             }
         });
 

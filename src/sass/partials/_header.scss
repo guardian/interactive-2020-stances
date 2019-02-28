@@ -14,20 +14,14 @@
     }
 }
 
-.uit-header__standfirst {
-    padding: 3px 0 0;
-    font-family: 'Guardian Egyptian Web';
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 1.2;
-
-    @include mq(tablet) {
-        font-size: 24px;
-    }
+.uit-header__meta {
+    display: flex;
+    justify-content: space-between;
 }
 
 .uit-header .uit-share {
     padding-bottom: 24px;
+    flex-shrink: 0;
 }
 
 .uit-header__byline {
@@ -51,4 +45,12 @@
     font-size: 14px;
     color: $c-dark-grey;
     margin: 2px 0 12px 0;
+}
+
+.uit-header__dateline-time {
+    display: none;
+
+    @include mq(mobileLandscape) {
+        display: block;
+    }
 }

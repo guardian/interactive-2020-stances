@@ -32,6 +32,9 @@
                                     <div class='uit-issue__candidate'>
                                         <img class='uit-issue__candidiate-image' src='{{ ../../../path }}/assets/{{ handlise @this }}.png' />
                                     </div>
+                                    {{#break @key ../candidates }}
+                                        <div class='uit-issue__candidate-spacer'></div>
+                                    {{/break}}
                                 {{/each}}
                             </div>
                         </div>

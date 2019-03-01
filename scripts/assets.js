@@ -109,6 +109,15 @@ module.exports = {
             return '<p><span class=\'uit-drop\'><span class=\'uit-drop__inner\'>' + firstCharacter + '</span></span>' + intro;
         });
 
+        handlebars.registerHelper('break', function(index, total, opts) {
+            total = total.length;
+
+            if (total === 5 && index === 2) {
+                console.log('hey');
+                return opts.fn(this);
+            }
+        });
+
         handlebars.registerHelper('inc', function(value, options) {
             return parseInt(value) + 1;
         });

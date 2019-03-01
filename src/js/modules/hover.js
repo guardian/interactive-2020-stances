@@ -52,9 +52,9 @@ export default {
     convertValueToString: function(value) {
         value = parseFloat(value);
 
-        if (value >= 1.7) {
+        if (value >= 1.2) {
             return 'the most progressive group';
-        } else if (value <= 1.2) {
+        } else if (value <= 0.6) {
             return 'the most moderate group';
         } else {
             return 'one of the in-betweenie groups';

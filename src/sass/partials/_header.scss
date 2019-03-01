@@ -51,6 +51,6 @@
     display: none;
 
     @include mq(mobileLandscape) {
-        display: block;
+        display: inline;
     }
 }

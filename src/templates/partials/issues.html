@@ -1,17 +1,11 @@
 <div class='uit-issues'>
     <div class='uit-container'>
-        <div class='uit-content'>
-            <h2 class='uit-subhead'>
-                <span class='uit-subhead__inner'>The Issues</span>
-            </h2>
-            <p>
-                Here's how our research breaks down based on individual issue.
-            </p>
-        </div>
         {{#each issues}}
             <div class='uit-issue uit-issue--{{ @index }}'>
                 <div class='uit-issue__header'>
-                    <h3 class='uit-issue__title'>{{ title }}</h3>
+                    <h2 class='uit-subhead'>
+                        <span class='uit-subhead__inner'>On {{ title }}</span>
+                    </h2>
                     <p class='uit-issue__description'>{{ description }}</p>
                 </div>
 

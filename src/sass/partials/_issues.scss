@@ -1,3 +1,10 @@
+.uit-issues {
+    .uit-content p {
+        padding-bottom: 18px;
+        margin: 0;
+    }
+}
+
 .uit-issue {
     position: relative;
     display: block;
@@ -42,7 +49,7 @@
     font-family: 'Guardian Egyptian Web';
     font-size: 24px;
     font-weight: 600;
-    color: $c-light-blue;
+    color: $c-black;
     margin: 0;
     margin-bottom: 3px;
 }
@@ -190,7 +197,7 @@
 .uit-issue__group-description__title {
     font-family: 'Guardian Egyptian Web';
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     color: $c-black;
     margin: 0;
 }

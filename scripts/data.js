@@ -32,7 +32,16 @@ function sortResults() {
     } else {
         data = {
             'issues': data[0],
-            'candidates': data[1]
+            'candidates': data[1],
+            'groups': {
+                'tech': data[2],
+                'climateChange': data[3],
+                'healthcare': data[4],
+                'gunControl': data[5],
+                'immigration': data[6],
+                'taxes': data[7],
+                'abortion': data[8]
+            }
         }
     }
 
@@ -67,13 +76,15 @@ function sortIssues() {
 }
 
 function sortCandidatesIntoIssues() {
-    data.candidates.forEach(function(candidate) {
-        for (var key in candidate) {
-            if (data.issues[key]) {
-                data.issues[key].groups[candidate[key]].candidates.push(candidate.candidate);
-            }
-        }
+    var groups = Object.keys(data.groups);
 
+    groups.forEach(function(group) {
+        data.groups[group].forEach(function(candidate) {
+            data.issues[group].groups[candidate.stance].candidates.push({
+                candidate: candidate.candidate,
+                quote: "cool cool cool"
+            });
+        });
     });
 
     return data;
@@ -82,19 +93,22 @@ function sortCandidatesIntoIssues() {
 function prepDataForRadarCharts() {
     var chartsData = {};
     var issues = Object.keys(data.issues);
+    var groups = Object.keys(data.groups);
 
     data.candidates.forEach(function(candidate) {
         chartsData[candidate.candidate] = [];
 
         issues.forEach(function(issue) {
-            if (candidate[issue]) {
-                chartsData[candidate.candidate].push({
-                    axis: issue,
-                    value: calculateChartValue(issue, candidate[issue]),
-                    title: data.issues[issue].title,
-                    group: candidate[issue]
-                })
-            }
+            data.groups[issue].forEach(function(stance) {
+                if (stance.candidate === candidate.candidate) {
+                    chartsData[candidate.candidate].push({
+                        axis: issue,
+                        group: stance.stance,
+                        title: data.issues[issue].title,
+                        value: calculateChartValue(issue, stance.stance)
+                    });
+                }
+            }.bind(this));
         }.bind(this));
     }.bind(this));
 
@@ -131,8 +145,9 @@ module.exports = function getData(config) {
             data = sortCandidatesIntoIssues();
             data = prepDataForRadarCharts();
             // call additional data cleaning functions here
+            delete data.groups;
 
-            // console.log(data);
+            console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

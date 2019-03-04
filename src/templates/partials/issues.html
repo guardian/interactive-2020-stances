@@ -29,8 +29,8 @@
                             </div>
                             <div class='uit-issue__candidiates'>
                                 {{#each candidates}}
-                                    <div class='uit-issue__candidate is-tooltippable' data-name='{{ @this }}'>
-                                        <img class='uit-issue__candidiate-image' src='{{ ../../../path }}/assets/{{ handlise @this }}.png' />
+                                    <div class='uit-issue__candidate is-tooltippable' data-name='{{ candidate }}' data-quote='{{ quote }}'>
+                                        <img class='uit-issue__candidiate-image' src='{{ ../../../path }}/assets/{{ handlise candidate }}.png' />
                                     </div>
                                     {{#break @key ../candidates }}
                                         <div class='uit-issue__candidate-spacer'></div>

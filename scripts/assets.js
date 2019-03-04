@@ -113,7 +113,6 @@ module.exports = {
             total = total.length;
 
             if (total === 5 && index === 2) {
-                console.log('hey');
                 return opts.fn(this);
             }
         });

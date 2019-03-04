@@ -45,6 +45,10 @@ module.exports = {
         var total = allAxis.length;
         var radius = options.factor * Math.min(options.width / 2, options.height / 2);
 
+        const rScale = d3.scaleLinear()
+                .range([0, options.radius])
+                .domain([0, options.maxValue]);
+
         var dataValues = []
 
         data.forEach(function(j, i) {
@@ -53,8 +57,6 @@ module.exports = {
                 options.height/2*(1-(parseFloat(Math.max(j.value, 0))/options.maxValue)*options.factor*Math.cos(i*options.radians/total))
             ])
         });
-
-        dataValues.push(dataValues[0]);
 
         svg.append('defs')
             .append('marker')
@@ -69,18 +71,12 @@ module.exports = {
                 .attr('d', "M 0 0 L 10 5 L 0 10 z")
                 .attr("class","uit-radar__arrow");
 
-        svg.selectAll('.uit-radar__area')
-            .data([dataValues])
-            .enter()
-            .append('polygon')
+        var radarLine = d3.line()
+            .curve(d3.curveCardinalClosed.tension(-0.2));
+
+        svg.append('path')
             .attr('class', 'uit-radar__area')
-            .attr('points', function(d) {
-                var str = '';
-                for (var i = 0; d.length > i; i++) {
-                    str = str + d[i][0] + ',' + d[i][1] + ' ';
-                }
-                return str;
-            });
+            .attr('d', radarLine(dataValues));
 
         var axis = svg.selectAll('.uit-radar__axis')
             .data(allAxis)

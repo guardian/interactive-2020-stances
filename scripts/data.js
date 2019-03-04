@@ -82,7 +82,7 @@ function sortCandidatesIntoIssues() {
         data.groups[group].forEach(function(candidate) {
             data.issues[group].groups[candidate.stance].candidates.push({
                 candidate: candidate.candidate,
-                quote: "cool cool cool"
+                quote: "cool cool cool" // retrive quote from data.groups[group] if candidate.contains(candidat) etc...
             });
         });
     });

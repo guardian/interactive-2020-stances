@@ -11,11 +11,11 @@ export default {
     },
 
     bindings: function() {
-        $('.uit-radar__point-hotspot').mouseover(function(e) {
+        $('.is-tooltippable').mouseover(function(e) {
             this.showToolTipFor(e.currentTarget);
         }.bind(this));
 
-        $('.uit-radar__point-hotspot').click(function(e) {
+        $('.is-tooltippable').click(function(e) {
             this.showToolTipFor(e.currentTarget);
         }.bind(this));
 
@@ -26,11 +26,13 @@ export default {
 
     showToolTipFor: function(el) {
         var data = $(el).data();
+        var type = $(el).hasClass('uit-radar__point-hotspot') ? 'radar' : 'candidate';
 
-        $('.uit-candidates__tooltip-label').text(data.group);
-        $('.uit-candidates__description-name').text(data.candidate);
-        $('.uit-candidates__description-issue').text(data.issue);
-        $('.uit-candidates__description-value').text(this.convertValueToString(data.value));
+        if (type === 'radar') {
+            this.populateToolTipForRadar(data);
+        } else {
+            this.populateToolTipForCandidate(data);
+        }
 
         var pointPosition = el.getBoundingClientRect();
         var tooltipLeft;
@@ -47,6 +49,16 @@ export default {
         $(el).one('mouseout', function() {
             $('.uit-candidates__tooltip').removeClass('is-visible');
         });
+    },
+
+    populateToolTipForRadar: function(data) {
+        $('.uit-candidates__tooltip-label').text(data.group);
+        $('.uit-candidates__description').text(`This puts ${data.candidate} in ${this.convertValueToString(data.value)} when compared to fellow democrat presidential nominees on the issue of ${data.issue}`);
+    },
+
+    populateToolTipForCandidate: function(data) {
+        $('.uit-candidates__tooltip-label').text('cool');
+        $('.uit-candidates__description').text('sweet');
     },
 
     convertValueToString: function(value) {

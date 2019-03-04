@@ -61,6 +61,7 @@
         "rollup-plugin-commonjs": "^9.2.0",
         "rollup-plugin-node-resolve": "^3.4.0",
         "sass-mq": "^5.0.0",
+        "snapsvg": "^0.5.1",
         "stevedore": "^0.1.4",
         "stringify": "^5.1.0",
         "sync-request": "^3.0.1",

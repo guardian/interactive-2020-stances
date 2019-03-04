@@ -64,3 +64,23 @@
         font-size: 34px;
     }
 }
+
+.uit-candidates__legend-description {
+    position: relative;
+    font-family: 'Guardian Sans Web';
+    font-size: 16px;
+    color: $c-light-blue;
+    margin: 0;
+}
+
+.uit-candidates__legend-state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+
+    &.is-active {
+        opacity: 1;
+    }
+}

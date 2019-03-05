@@ -196,9 +196,8 @@
 }
 
 .uit-issue__group-descriptions {
-    text-align: center;
-
     @include mq(desktop) {
+        text-align: center;
         padding-right: 20px;
         min-height: 6em;
     }
@@ -216,9 +215,13 @@
     overflow: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     max-width: 280px;
-    margin: 4px auto 0;
+    margin: 4px 0 0;
+
+    @include mq(desktop) {
+        justify-content: center;
+        margin: 4px auto 0;
+    }
 }
 
 .uit-issue__candidate {

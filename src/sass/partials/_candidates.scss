@@ -1,6 +1,10 @@
 .uit-candidates {
     position: relative;
 
+    .uit-content {
+        min-height: 250px;
+    }
+
     .uit-content p {
         padding-bottom: 18px;
         margin: 0;
@@ -38,6 +42,10 @@
     width: calc(50% - 20px);
     padding-right: 20px;
     margin-bottom: 24px;
+
+    @include mq(tablet) {
+        width: calc(33.3333% - 20px);
+    }
 
     @include mq(desktop) {
         width: 220px;

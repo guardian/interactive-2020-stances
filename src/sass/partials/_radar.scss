@@ -41,8 +41,13 @@
 .uit-candidates__legend {
     width: 180px;
 
-    @include mq(leftCol) {
+    @include mq(desktop) {
         position: absolute;
+        top: 0;
+        right: -260px;
+    }
+
+    @include mq(leftCol) {
         left: -174px;
         width: 160px;
     }

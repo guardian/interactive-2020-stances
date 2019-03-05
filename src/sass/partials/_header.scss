@@ -6,7 +6,7 @@
     padding: 6px 0;
     font-family: 'Guardian Egyptian Web';
     font-weight: 600;
-    font-size: 24px;
+    font-size: 38px;
     line-height: 1.1;
 
     @include mq(tablet) {
@@ -32,6 +32,7 @@
     font-weight: 400;
     color: $c-light-blue;
     margin: 0;
+    margin-bottom: 0 !important;
 
     a {
         font-style: normal;

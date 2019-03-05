@@ -48,6 +48,8 @@
     }
 
     @include mq(leftCol) {
+        top: auto;
+        right: auto;
         left: -174px;
         width: 160px;
     }

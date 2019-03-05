@@ -2,7 +2,9 @@
     position: relative;
 
     .uit-content {
-        min-height: 250px;
+        @include mq(desktop, leftCol) {
+            min-height: 250px;
+        }
     }
 
     .uit-content p {
@@ -41,10 +43,11 @@
 .uit-candidates__candidate {
     width: calc(50% - 20px);
     padding-right: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 
     @include mq(tablet) {
         width: calc(33.3333% - 20px);
+        margin-bottom: 24px;
     }
 
     @include mq(desktop) {

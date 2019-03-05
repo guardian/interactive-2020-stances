@@ -34,31 +34,32 @@ export default {
             this.populateToolTipForCandidate(data);
         }
 
-        var pointPosition = el.getBoundingClientRect();
-        var tooltipLeft;
+        var pointPosition = $(el).offset();
+        var elementHeight = $(el).height();
+        var pageOffset = $('.uit').offset().top;
 
-        tooltipLeft = (pointPosition.left - offsets.left);
-
-        $('.uit-candidates__tooltip').css({
-            top: pointPosition.top - (offsets.top - $(window).scrollTop()),
-            left: tooltipLeft
+        $('.uit-tooltip').css({
+            top: pointPosition.top + elementHeight - pageOffset,
+            left: pointPosition.left
         });
 
-        $('.uit-candidates__tooltip').addClass('is-visible');
+        $('.uit-tooltip').addClass('is-visible');
 
         $(el).one('mouseout', function() {
-            $('.uit-candidates__tooltip').removeClass('is-visible');
+            $('.uit-tooltip').removeClass('is-visible');
         });
     },
 
     populateToolTipForRadar: function(data) {
-        $('.uit-candidates__tooltip-label').text(data.group);
-        $('.uit-candidates__description').text(`This puts ${data.candidate} in ${this.convertValueToString(data.value)} when compared to fellow democrat presidential nominees on the issue of ${data.issue}`);
+        $('.uit-tooltip').removeClass('is-quote');
+        $('.uit-tooltip__title-copy').text(data.group);
+        $('.uit-tooltip__secondary').text(`This puts ${data.candidate} in ${this.convertValueToString(data.value)} when compared to fellow democrat presidential nominees on the issue of ${data.issue}`);
     },
 
     populateToolTipForCandidate: function(data) {
-        $('.uit-candidates__tooltip-label').text('cool');
-        $('.uit-candidates__description').text('sweet');
+        $('.uit-tooltip').addClass('is-quote');
+        $('.uit-tooltip__title-copy').text(data.quote);
+        $('.uit-tooltip__secondary').html(data.source);
     },
 
     convertValueToString: function(value) {

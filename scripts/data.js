@@ -82,13 +82,29 @@ function sortCandidatesIntoIssues() {
         data.groups[group].forEach(function(candidate) {
             data.issues[group].groups[candidate.stance].candidates.push({
                 candidate: candidate.candidate,
-                quote: "cool cool cool" // retrive quote from data.groups[group] if candidate.contains(candidat) etc...
+                quote: fetchQuote(group, candidate)
             });
         });
     });
 
     return data;
 }
+
+function fetchQuote(issue, candidate) {
+    var stances = data.groups[issue];
+
+    for (var i in stances) {
+        if (stances[i].candidate === candidate.candidate && stances[i].quote) {
+            return {
+                copy: stances[i].quote,
+                source: stances[i].source || null
+            }
+        }
+    }
+
+    return null;
+}
+
 
 function prepDataForRadarCharts() {
     var chartsData = {};
@@ -144,10 +160,9 @@ module.exports = function getData(config) {
             data = sortIssues();
             data = sortCandidatesIntoIssues();
             data = prepDataForRadarCharts();
-            // call additional data cleaning functions here
             delete data.groups;
 
-            console.log(JSON.stringify(data, null, 4));
+            // console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

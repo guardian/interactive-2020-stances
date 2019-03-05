@@ -29,7 +29,7 @@
                             </div>
                             <div class='uit-issue__candidiates'>
                                 {{#each candidates}}
-                                    <div class='uit-issue__candidate is-tooltippable' data-name='{{ candidate }}' data-quote='{{ quote }}'>
+                                    <div class='uit-issue__candidate is-tooltippable' data-name='{{ candidate }}' data-quote='{{ quote.copy }}' data-source='{{ quote.source }}'>
                                         <img class='uit-issue__candidiate-image' src='{{ ../../../path }}/assets/{{ handlise candidate }}.png' />
                                     </div>
                                     {{#break @key ../candidates }}

@@ -1,0 +1,40 @@
+.uit-tooltip {
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+    transform: translateY(20px);
+    box-shadow: 2px 2px $c-black;
+    opacity: 1;
+    background-color: $c-white;
+    border: 1px solid $c-black;
+    padding: 4px 6px;
+    transition: opacity 0.5 linear;
+    width: 240px;
+
+    &.is-visible {
+        opacity: 1;
+    }
+
+    &.is-quote {
+        margin-top: -12px;
+    }
+}
+
+.uit-tooltip__title svg {
+    display: none;
+
+    .is-quote & {
+        margin-top: 0.33em;
+        margin-right: 0.4em;
+        display: inline;
+        fill: $c-black;
+        width: 1.2em;
+        float: left;
+    }
+}
+
+.uit-tooltip__title-copy {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 600;
+    color: $c-black;
+}

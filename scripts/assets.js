@@ -100,6 +100,22 @@ module.exports = {
             }
         });
 
+        handlebars.registerHelper('judge', function(value) {
+            value = parseFloat(value);
+
+            if (value > 7.5) {
+                return 'Very progressive';
+            } else if (value > 7) {
+                return 'Progressive'
+            } else if (value > 6.5) {
+                return 'Nuanced?'
+            } else if (value > 6) {
+                return 'Moderate'
+            } else {
+                return 'Very Moderate'
+            }
+        });
+
         handlebars.registerHelper('markedCap', function(string) {
             var markedIntro = markdown.toHTML(string);
             var intro = markedIntro.slice(3);

@@ -1,7 +1,7 @@
 .uit-candidates {
     position: relative;
 
-    .uit-content {
+    .uit-content:first-of-type {
         @include mq(desktop, leftCol) {
             min-height: 250px;
         }

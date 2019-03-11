@@ -49,6 +49,11 @@
         position: fixed;
     }
 
+    &.was-fixed {
+        top: auto;
+        bottom: 0px;
+    }
+
     @include mq(desktop) {
         top: 32px;
         right: 60px;

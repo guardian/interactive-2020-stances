@@ -35,6 +35,10 @@
     transition-delay: 0.5s;
     max-height: 3000px;
 
+    @include mq(desktop, leftCol) {
+        width: 620px;
+    }
+
     @include mq(leftCol) {
         position: relative;
         width: auto;
@@ -75,7 +79,7 @@
         margin-bottom: 24px;
     }
 
-    @include mq(desktop) {
+    @include mq(leftCol) {
         width: 220px;
 
         &:nth-of-type(4n+1) {

@@ -1,4 +1,8 @@
 .uit-issues {
+    position: relative;
+    z-index: 2;
+    background-color: $c-white;
+
     .uit-content p {
         padding-bottom: 18px;
         margin: 0;

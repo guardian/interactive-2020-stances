@@ -5,7 +5,9 @@ window.$ = jquery;
 import legend from './modules/legend.js';
 import share from './modules/share.js';
 import hover from './modules/hover.js';
+import expand from './modules/expand.js';
 
 legend.init();
 share.init();
 hover.init();
+expand.init();

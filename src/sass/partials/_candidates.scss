@@ -13,11 +13,16 @@
     }
 }
 
+.uit-candidates__button {
+    margin-bottom: 20px;
+}
+
 .uit-candidates__candidates {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    padding-bottom: 60px;
+    transition: max-height 0.5s linear;
+    max-height: 3000px;
 
     @include mq(leftCol) {
         position: relative;
@@ -38,6 +43,15 @@
     @include mq(wide) {
         margin-left: 240px;
     }
+
+    &--hidden {
+        max-height: 0;
+    }
+
+    &--main {
+        max-width: 620px;
+        justify-content: space-between;
+    }
 }
 
 .uit-candidates__candidate {
@@ -57,14 +71,14 @@
             padding-right: 0;
         }
     }
+
+    .uit-candidates__candidates--main & {
+        width: calc(50% - 20px);
+    }
 }
 
 .uit-candidates__chart {
     position: relative;
-}
-
-.uit-candidates__write-up {
-    display: none;
 }
 
 .uit-candidates__label {
@@ -73,6 +87,11 @@
     font-weight: 600;
     padding-right: 10px;
     margin-bottom: 3px;
+}
+
+.uit-candidates__label-title {
+    color: $c-light-blue;
+    display: block;
 }
 
 .uit-candiates__avatar {

@@ -24,8 +24,8 @@ module.exports = {
         var candidates = Object.keys(data.candidates);
 
         candidates.forEach(function(candidate, i) {
-            if (Object.keys(data.candidates[candidate]).length > 0) {
-                this.createChart(candidate, data.candidates[candidate], data, i);
+            if (Object.keys(data.candidates[candidate].data).length > 0) {
+                this.createChart(candidate, data.candidates[candidate].data, data, i);
             } else {
                 console.log('insufficient data for ' + candidate);
             }

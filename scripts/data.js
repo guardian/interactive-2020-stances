@@ -105,19 +105,22 @@ function fetchQuote(issue, candidate) {
     return null;
 }
 
-
 function prepDataForRadarCharts() {
     var chartsData = {};
     var issues = Object.keys(data.issues);
     var groups = Object.keys(data.groups);
 
     data.candidates.forEach(function(candidate) {
-        chartsData[candidate.candidate] = [];
+        chartsData[candidate.candidate] = {};
+        chartsData[candidate.candidate].data = [];
+
+        var total = 0;
 
         issues.forEach(function(issue) {
             data.groups[issue].forEach(function(stance) {
                 if (stance.candidate === candidate.candidate) {
-                    chartsData[candidate.candidate].push({
+                    total += calculateChartValue(issue, stance.stance)
+                    chartsData[candidate.candidate].data.push({
                         axis: issue,
                         group: stance.stance,
                         title: data.issues[issue].title,
@@ -126,6 +129,8 @@ function prepDataForRadarCharts() {
                 }
             }.bind(this));
         }.bind(this));
+
+        chartsData[candidate.candidate].total = total;
     }.bind(this));
 
     data.candidates = chartsData;
@@ -139,6 +144,28 @@ function calculateChartValue(issue, value) {
     var place = values.indexOf(value);
 
     return Math.abs((place / total) - 1) + .25;
+}
+
+function duplicateBestAndWorstCandidates() {
+    var sortedCandidates = [];
+
+    for (var candidate in data.candidates) {
+        sortedCandidates.push({
+            candidate: candidate,
+            total: data.candidates[candidate].total
+        });
+    }
+
+    sortedCandidates.sort(function(a, b) {
+        return b.total - a.total;
+    });
+
+    data.bestCandidate = data.candidates[sortedCandidates[0].candidate];
+    data.bestCandidate.name = sortedCandidates[0].candidate;
+    data.worstCandidate = data.candidates[sortedCandidates[sortedCandidates.length - 1].candidate];
+    data.worstCandidate.name = sortedCandidates[sortedCandidates.length - 1].candidate;
+
+    return data;
 }
 
 function appendConfigDrivenData(config) {
@@ -160,9 +187,10 @@ module.exports = function getData(config) {
             data = sortIssues();
             data = sortCandidatesIntoIssues();
             data = prepDataForRadarCharts();
+            data = duplicateBestAndWorstCandidates();
             delete data.groups;
 
-            // console.log(JSON.stringify(data, null, 4));
+            console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

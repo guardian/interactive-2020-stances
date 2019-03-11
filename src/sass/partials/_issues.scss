@@ -41,7 +41,15 @@
     }
 
     &--0 {
-        padding-top: 24px;
+        padding-top: 12px;
+
+        @include mq(desktop) {
+            padding-top: 48px;
+        }
+
+        @include mq(leftCol) {
+            padding-top: 60px;
+        }
     }
 }
 

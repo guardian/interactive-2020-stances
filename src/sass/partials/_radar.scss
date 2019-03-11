@@ -39,26 +39,22 @@
 }
 
 .uit-candidates__legend {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 10;
-    width: 180px;
-
-    &.is-fixed {
-        position: fixed;
-    }
-
-    &.was-fixed {
-        top: auto;
-        bottom: 0px;
-    }
+    width: 160px;
 
     @include mq(desktop) {
+        position: absolute;
         top: 32px;
         right: 60px;
+        z-index: 10;
+        width: 180px;
+
+        &.was-fixed {
+            top: auto;
+            bottom: 0px;
+        }
 
         &.is-fixed {
+            position: fixed;
             right: calc(60px + (100% - (980px)) / 2);
         }
     }

@@ -21,8 +21,8 @@
             {{#bestCandidate}}
                 <div class='uit-candidates__candidate'>
                     <h3 class='uit-candidates__label'>
-                        <span class='uit-candidates__label-title'>Most progressive</span>
                         {{ name }}
+                        <span class='uit-candidates__label-title'>Most progressive</span>
                     </h3>
                     <div class='uit-candidates__chart'>
                         <div class='uit-candiates__avatar'>
@@ -36,8 +36,8 @@
             {{#worstCandidate}}
                 <div class='uit-candidates__candidate'>
                     <h3 class='uit-candidates__label'>
-                        <span class='uit-candidates__label-title'>Most moderate</span>
                         {{ name }}
+                        <span class='uit-candidates__label-title'>Most moderate</span>
                     </h3>
                     <div class='uit-candidates__chart'>
                         <div class='uit-candiates__avatar'>
@@ -55,6 +55,8 @@
 
         <div class='uit-candidates__candidates uit-candidates__candidates--hidden is-expandable'>
             {{#each candidates}}
+                {{#if skip}}
+                {{else}}
                 <div class='uit-candidates__candidate'>
                     <h3 class='uit-candidates__label'>{{ @key }}</h3>
                     <div class='uit-candidates__chart'>
@@ -64,6 +66,7 @@
                         {{{ graphic @key }}}
                     </div>
                 </div>
+                {{/if}}
             {{/each}}
         </div>
     </div>

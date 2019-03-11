@@ -160,10 +160,16 @@ function duplicateBestAndWorstCandidates() {
         return b.total - a.total;
     });
 
-    data.bestCandidate = data.candidates[sortedCandidates[0].candidate];
-    data.bestCandidate.name = sortedCandidates[0].candidate;
-    data.worstCandidate = data.candidates[sortedCandidates[sortedCandidates.length - 1].candidate];
-    data.worstCandidate.name = sortedCandidates[sortedCandidates.length - 1].candidate;
+    var bestCandidate = sortedCandidates[0].candidate;
+    var worstCandidate = sortedCandidates[sortedCandidates.length - 1].candidate
+
+    data.bestCandidate = data.candidates[bestCandidate];
+    data.bestCandidate.name = bestCandidate;
+    data.candidates[bestCandidate].skip = true;
+
+    data.worstCandidate = data.candidates[worstCandidate];
+    data.worstCandidate.name = worstCandidate;
+    data.candidates[worstCandidate].skip = true;
 
     return data;
 }
@@ -190,7 +196,7 @@ module.exports = function getData(config) {
             data = duplicateBestAndWorstCandidates();
             delete data.groups;
 
-            console.log(JSON.stringify(data, null, 4));
+            // console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

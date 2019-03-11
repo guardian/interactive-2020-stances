@@ -13,15 +13,26 @@
     }
 }
 
+.uit-candidates__expansion-zone {
+    position: relative;
+    min-height: 56px;
+}
+
 .uit-candidates__button {
-    margin-bottom: 20px;
+    transition: opacity 0.2s linear;
+
+    &--clicked {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 .uit-candidates__candidates {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    transition: max-height 0.5s linear;
+    transition: max-height 0.6s linear;
+    transition-delay: 0.5s;
     max-height: 3000px;
 
     @include mq(leftCol) {
@@ -74,6 +85,7 @@
 
     .uit-candidates__candidates--main & {
         width: calc(50% - 20px);
+        margin-bottom: 0;
     }
 }
 

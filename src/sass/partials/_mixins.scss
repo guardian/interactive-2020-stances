@@ -48,7 +48,7 @@
         background-color: darken($c-background, 5%);
 
         svg {
-            transform: translate(4px, 0);
+            transform: translate(0, 2px);
         }
     }
 
@@ -63,7 +63,7 @@
     svg {
         position: absolute;
         right: 4px;
-        top: 0;
+        top: -1px;
         bottom: 0;
         height: 100%;
         transition: transform 0.4s ease-out;

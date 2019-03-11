@@ -39,6 +39,10 @@
     @include mq(wide) {
         margin-left: 240px;
     }
+
+    &--0 {
+        padding-top: 24px;
+    }
 }
 
 .uit-issue__header {

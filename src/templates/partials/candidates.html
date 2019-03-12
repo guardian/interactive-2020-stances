@@ -4,22 +4,16 @@
             <h2 class='uit-subhead'>
                 <span class='uit-subhead__inner'>The Candidates</span>
             </h2>
+            {{> partials/legend }}
             <p>
-                Before we start, it's worth stating that this isn't an exact science. We started by taking the declared candidates and grouping them based on their stances on our list of issues. We used campaign speeches and materials when available and occasionally had to resort to interview quotes and voting records. What we're left with is an approximate of how progressive or moderate candidates are when compared to their fellow candidiates. The larger area a candidate has, the more progressive they are.
+                Before we start, it's worth stating that this isn't an exact science. We started by taking the declared candidates and grouping them based on their stances on our list of issues. We used campaign speeches and materials when available and occasionally had to resort to interview quotes and voting records.
+                What we're left with is an approximate of how progressive or moderate candidates are when compared to their fellow candidiates. The larger area a candidate has, the more progressive they are.
             </p>
         </div>
 
 
         <div class='uit-candidates__overview'>
-            <div class='uit-candidates__legend'>
-                <h3 class='uit-candidates__label uit-candidates__label--legend'>Key</h3>
-                <p class='uit-candidates__legend-description'>
-                    <span class='uit-candidates__legend-state uit-candidates__legend-state--large'>More progressive</span>
-                    <span class='uit-candidates__legend-state uit-candidates__legend-state--small'>More moderate</span>
-                </p>
-                {{> partials/legend }}
-            </div>
-
+            {{> partials/legend }}
             <div class='uit-candidates__candidates uit-candidates__candidates--main'>
                 {{#bestCandidate}}
                     <div class='uit-candidates__candidate'>

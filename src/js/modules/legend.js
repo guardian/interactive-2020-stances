@@ -2,17 +2,40 @@ import Snap from 'snapsvg';
 
 const animationDuration = 2000;
 
+let large, largePoints, smallPoints;
+
 export default {
     init: function() {
+        this.getPoints();
+        this.bindings();
+        this.findLegendToAnimate();
         this.animateLegend();
     },
 
-    animateLegend: function() {
-        const large = Snap.select('#uit-large');
-        const small = Snap.select('#uit-small');
-        const largePoints = large.node.getAttribute('d');
-        const smallPoints = small.node.getAttribute('d');
+    bindings: function() {
+        $(window).resize(function() {
+            this.findLegendToAnimate();
+        }.bind(this));
+    },
 
+    getPoints: function() {
+        largePoints = $('#uit-large').attr('d');
+        smallPoints = $('#uit-small').attr('d');
+    },
+
+    findLegendToAnimate: function() {
+        $('.uit-candidates__legend').removeClass('is-visible');
+
+        if ($(window).width() >= 960) {
+            $('.uit-candidates__overview .uit-candidates__legend').addClass('is-visible');
+        } else {
+            $('.uit-content .uit-candidates__legend').addClass('is-visible');
+        }
+
+        large = Snap.select('.is-visible #uit-large');
+    },
+
+    animateLegend: function() {
         const toLarge = function() {
             $('.uit-candidates__legend-state').removeClass('is-active');
             $('.uit-candidates__legend-state--large').addClass('is-active');

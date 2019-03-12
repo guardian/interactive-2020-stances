@@ -93,6 +93,25 @@
     }
 }
 
+.uit-content .uit-candidates__legend {
+    float: right;
+    margin-left: 10px;
+
+    @include mq(mobileLandscape) {
+        margin-left: 20px;
+    }
+
+    @include mq(desktop) {
+        display: none;
+    }
+}
+
+.uit-candidates__overview .uit-candidates__legend {
+    @include mq($until: desktop) {
+        display: none;
+    }
+}
+
 .uit-candidates__legend-description {
     position: relative;
     font-family: 'Guardian Sans Web';

@@ -28,9 +28,9 @@ export default {
 
         // add if at bottom of container
 
-        if (scrollTop > $('.uit-candidates').offset().top + $('.uit-candidates').height() - legendHeight - 32) {
+        if (scrollTop > $('.uit-candidates__overview').offset().top + $('.uit-candidates__overview').height() - legendHeight) {
             $('.uit-candidates__legend').removeClass('is-fixed').addClass('was-fixed');
-        } else if (scrollTop > $('.uit-candidates').offset().top) {
+        } else if (scrollTop > $('.uit-candidates__overview').offset().top) {
             $('.uit-candidates__legend').removeClass('was-fixed').addClass('is-fixed');
         } else {
             $('.uit-candidates__legend').removeClass('is-fixed was-fixed');

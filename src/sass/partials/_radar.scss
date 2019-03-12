@@ -43,7 +43,7 @@
 
     @include mq(desktop) {
         position: absolute;
-        top: 32px;
+        top: 0;
         right: 60px;
         z-index: 10;
         width: 180px;
@@ -55,26 +55,26 @@
 
         &.is-fixed {
             position: fixed;
-            right: calc(60px + (100% - (980px)) / 2);
+            right: calc(80px + (100% - (980px)) / 2);
         }
     }
 
     @include mq(leftCol) {
         right: auto;
-        left: 10px;
+        left: -10px;
         width: 150px;
 
         &.is-fixed {
-            left: calc(10px + (100% - (1142px)) / 2)
+            left: calc(10px + (100% - (1140px)) / 2)
         }
     }
 
     @include mq(wide) {
         width: 210px;
-        left: 10px;
+        left: 0;
 
         &.is-fixed {
-            left: calc(10px + (100% - (1302px)) / 2)
+            left: calc(20px + (100% - (1300px)) / 2)
         }
     }
 

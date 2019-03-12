@@ -9,70 +9,72 @@
             </p>
         </div>
 
-        <div class='uit-candidates__legend'>
-            <h3 class='uit-candidates__label uit-candidates__label--legend'>Key</h3>
-            <p class='uit-candidates__legend-description'>
-                <span class='uit-candidates__legend-state uit-candidates__legend-state--large'>More progressive</span>
-                <span class='uit-candidates__legend-state uit-candidates__legend-state--small'>More moderate</span>
-            </p>
-            {{> partials/legend }}
-        </div>
 
-        <div class='uit-candidates__candidates uit-candidates__candidates--main'>
-            {{#bestCandidate}}
-                <div class='uit-candidates__candidate'>
-                    <h3 class='uit-candidates__label'>
-                        {{ name }}
-                        <span class='uit-candidates__label-title'>The most progressive candidate</span>
-                    </h3>
-                    <div class='uit-candidates__chart'>
-                        <div class='uit-candiates__avatar'>
-                            <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise name }}.png' />
+        <div class='uit-candidates__overview'>
+            <div class='uit-candidates__legend'>
+                <h3 class='uit-candidates__label uit-candidates__label--legend'>Key</h3>
+                <p class='uit-candidates__legend-description'>
+                    <span class='uit-candidates__legend-state uit-candidates__legend-state--large'>More progressive</span>
+                    <span class='uit-candidates__legend-state uit-candidates__legend-state--small'>More moderate</span>
+                </p>
+                {{> partials/legend }}
+            </div>
+
+            <div class='uit-candidates__candidates uit-candidates__candidates--main'>
+                {{#bestCandidate}}
+                    <div class='uit-candidates__candidate'>
+                        <h3 class='uit-candidates__label'>
+                            {{ name }}
+                            <span class='uit-candidates__label-title'>The most progressive candidate</span>
+                        </h3>
+                        <div class='uit-candidates__chart'>
+                            <div class='uit-candiates__avatar'>
+                                <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise name }}.png' />
+                            </div>
+                            {{{ graphic name }}}
                         </div>
-                        {{{ graphic name }}}
                     </div>
-                </div>
-            {{/bestCandidate}}
+                {{/bestCandidate}}
 
-            {{#worstCandidate}}
-                <div class='uit-candidates__candidate'>
-                    <h3 class='uit-candidates__label'>
-                        {{ name }}
-                        <span class='uit-candidates__label-title'>The most moderate candidate</span>
-                    </h3>
-                    <div class='uit-candidates__chart'>
-                        <div class='uit-candiates__avatar'>
-                            <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise name }}.png' />
+                {{#worstCandidate}}
+                    <div class='uit-candidates__candidate'>
+                        <h3 class='uit-candidates__label'>
+                            {{ name }}
+                            <span class='uit-candidates__label-title'>The most moderate candidate</span>
+                        </h3>
+                        <div class='uit-candidates__chart'>
+                            <div class='uit-candiates__avatar'>
+                                <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise name }}.png' />
+                            </div>
+                            {{{ graphic name }}}
                         </div>
-                        {{{ graphic name }}}
                     </div>
-                </div>
-            {{/worstCandidate}}
-        </div>
+                {{/worstCandidate}}
+            </div>
 
+            <div class='uit-content'>
+                <a class='uit-button uit-candidates__button'>View all candidates {{> icons/down }} </a>
+            </div>
 
-        <div class='uit-content'>
-            <a class='uit-button uit-candidates__button'>View all candidates {{> icons/down }} </a>
-        </div>
-
-        <div class='uit-candidates__candidates uit-candidates__candidates--hidden is-expandable'>
-            {{#each candidates}}
-                {{#if skip}}
-                {{else}}
-                <div class='uit-candidates__candidate'>
-                    <h3 class='uit-candidates__label'>
-                        {{ @key }}
-                        <span class='uit-candidates__label-title'>{{ judge total }}</span>
-                    </h3>
-                    <div class='uit-candidates__chart'>
-                        <div class='uit-candiates__avatar'>
-                            <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise @key }}.png' />
+            <div class='uit-candidates__candidates uit-candidates__candidates--hidden is-expandable'>
+                {{#each candidates}}
+                    {{#if skip}}
+                    {{else}}
+                    <div class='uit-candidates__candidate'>
+                        <h3 class='uit-candidates__label'>
+                            {{ @key }}
+                            <span class='uit-candidates__label-title'>{{ judge total }}</span>
+                        </h3>
+                        <div class='uit-candidates__chart'>
+                            <div class='uit-candiates__avatar'>
+                                <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise @key }}.png' />
+                            </div>
+                            {{{ graphic @key }}}
                         </div>
-                        {{{ graphic @key }}}
                     </div>
-                </div>
-                {{/if}}
-            {{/each}}
+                    {{/if}}
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>

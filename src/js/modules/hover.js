@@ -1,13 +1,8 @@
-let offsets;
+let touchTimer;
 
 export default {
     init: function() {
-        this.setParentValues();
         this.bindings();
-    },
-
-    setParentValues: function() {
-        offsets = $('.uit-candidates__candidates').offset();
     },
 
     bindings: function() {
@@ -17,10 +12,7 @@ export default {
 
         $('.is-tooltippable').click(function(e) {
             this.showToolTipFor(e.currentTarget);
-        }.bind(this));
-
-        $(window).resize(function() {
-            this.setParentValues();
+            this.setTapTimer();
         }.bind(this));
     },
 
@@ -40,14 +32,29 @@ export default {
 
         $('.uit-tooltip').css({
             top: pointPosition.top + elementHeight - pageOffset,
-            left: pointPosition.left
         });
+
+        if ($(window).width() >= 780) {
+            $('.uit-tooltip').css({
+                left: pointPosition.left
+            });
+        }
 
         $('.uit-tooltip').addClass('is-visible');
 
         $(el).one('mouseout', function() {
             $('.uit-tooltip').removeClass('is-visible');
         });
+    },
+
+    setTapTimer: function() {
+        if ($(window).width() <= 780) {
+            clearTimeout(touchTimer);
+
+            touchTimer = setTimeout(function() {
+                $('.uit-tooltip').removeClass('is-visible');
+            }, 15000);
+        }
     },
 
     populateToolTipForRadar: function(data) {

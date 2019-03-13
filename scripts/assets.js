@@ -6,8 +6,8 @@ var glob = require('glob-fs')({ gitignore: true });
 var markdown = require('markdown').markdown;
 var rollup = require('rollup');
 var resolve = require('rollup-plugin-node-resolve');
-var minify = require('rollup-plugin-babel-minify');
 var commonjs = require('rollup-plugin-commonjs');
+var terser = require('rollup-plugin-terser').terser;
 var deploy = require('./deploy.js');
 
 module.exports = {
@@ -24,15 +24,10 @@ module.exports = {
                         namedExports: {
                             'node_modules/jquery/dist/jquery.min.js': [ 'jquery' ]
                         }
-                    })
+                    }),
+                    terser()
                 ]
             };
-
-            if (config.specs.deploy) {
-                rollupOptions.plugins.push(minify({
-                    comments: false
-                }))
-            }
 
             var bundle = await rollup.rollup(rollupOptions);
 

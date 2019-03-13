@@ -1,4 +1,4 @@
-let scrollTop, windowHeight, legendHeight;
+let scrollTop, windowHeight;
 
 export default {
     init: function() {
@@ -20,15 +20,12 @@ export default {
 
     setValues: function() {
         windowHeight = $(window).height();
-        legendHeight = $('.uit-candidates__legend').height();
     },
 
     onScroll: function() {
         scrollTop = $(window).scrollTop();
 
-        // add if at bottom of container
-
-        if (scrollTop > $('.uit-candidates__overview').offset().top + $('.uit-candidates__overview').height() - legendHeight) {
+        if (scrollTop > $('.uit-candidates__overview').offset().top + $('.uit-candidates__overview').height() - $('.uit-candidates__legend.is-visible').height()) {
             $('.uit-candidates__legend').removeClass('is-fixed').addClass('was-fixed');
         } else if (scrollTop > $('.uit-candidates__overview').offset().top) {
             $('.uit-candidates__legend').removeClass('was-fixed').addClass('is-fixed');

@@ -201,8 +201,9 @@
 .uit-issue__rule-label--last {
     @include mq($until: desktop) {
         top: auto;
-        bottom: 43px;
-        left: -49px;
+        bottom: 14px;
+        left: 0;
+        transform-origin: bottom left;
     }
 
     @include mq(desktop) {

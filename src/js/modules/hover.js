@@ -30,6 +30,8 @@ export default {
         var elementHeight = $(el).height();
         var pageOffset = $('.uit').offset().top;
 
+        $('.uit-tooltip').attr('style', '');
+
         $('.uit-tooltip').css({
             top: pointPosition.top + elementHeight - pageOffset,
         });

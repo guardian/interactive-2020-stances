@@ -21,6 +21,9 @@
 
     @include mq(tablet) {
         width: 240px;
+        right: auto;
+        left: auto;
+        margin: 0;
     }
 
     &.is-visible {

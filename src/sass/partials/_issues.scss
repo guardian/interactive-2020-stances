@@ -12,18 +12,17 @@
 .uit-issue {
     position: relative;
     display: block;
-    padding-bottom: 12px;
+    padding-bottom: 48px;
     max-width: 620px;
 
     @include mq(desktop) {
         max-width: none;
-        padding-bottom: 48px;
+        padding-bottom: 60px;
     }
 
     @include mq(leftCol) {
         position: relative;
         margin-left: 160px;
-        padding-bottom: 60px;
 
         &:before {
             content: '';
@@ -41,13 +40,9 @@
     }
 
     &--0 {
-        padding-top: 12px;
+        padding-top: 48px;
 
         @include mq(desktop) {
-            padding-top: 48px;
-        }
-
-        @include mq(leftCol) {
             padding-top: 60px;
         }
     }
@@ -94,7 +89,7 @@
 .uit-issue__group {
     position: relative;
     padding-left: 40px;
-    padding-bottom: 18px;
+    padding-bottom: 24px;
 
     @include mq(desktop) {
         display: flex;

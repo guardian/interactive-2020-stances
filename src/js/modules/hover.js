@@ -8,11 +8,16 @@ export default {
     bindings: function() {
         $('.is-tooltippable').mouseover(function(e) {
             this.showToolTipFor(e.currentTarget);
+            this.setMouseOut(e.currentTarget);
         }.bind(this));
 
         $('.is-tooltippable').click(function(e) {
             this.showToolTipFor(e.currentTarget);
             this.setTapTimer();
+        }.bind(this));
+
+        $('.uit-tooltip__catch').click(function() {
+            this.hideToolTip();
         }.bind(this));
     },
 
@@ -43,20 +48,29 @@ export default {
         }
 
         $('.uit-tooltip').addClass('is-visible');
+    },
 
+    setMouseOut: function(el) {
         $(el).one('mouseout', function() {
-            $('.uit-tooltip').removeClass('is-visible');
-        });
+            this.hideToolTip()
+        }.bind(this));
     },
 
     setTapTimer: function() {
         if ($(window).width() <= 780) {
+            $('.uit-tooltip__catch').addClass('is-visible');
             clearTimeout(touchTimer);
 
             touchTimer = setTimeout(function() {
-                $('.uit-tooltip').removeClass('is-visible');
-            }, 15000);
+                this.hideToolTip();
+            }.bind(this), 15000);
         }
+    },
+
+    hideToolTip: function() {
+        clearTimeout(touchTimer);
+        $('.uit-tooltip').removeClass('is-visible');
+        $('.uit-tooltip__catch').removeClass('is-visible');
     },
 
     populateToolTipForRadar: function(data) {

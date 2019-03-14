@@ -53,3 +53,19 @@
     font-weight: 600;
     color: $c-black;
 }
+
+.uit-tooltip__catch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: none;
+
+    &.is-visible {
+        @include mq($until: tablet) {
+            pointer-events: auto;
+        }
+    }
+}

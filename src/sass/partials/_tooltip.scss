@@ -10,7 +10,7 @@
     border: 1px solid $c-black;
     left: 10px;
     right: 10px;
-    margin: auto;
+    margin: -42px auto 0;
     opacity: 0;
     transition: opacity 0.3s linear;
 
@@ -23,7 +23,12 @@
         width: 240px;
         right: auto;
         left: auto;
-        margin: 0;
+        margin: -42px 0 0;
+    }
+
+    .ios &,
+    .android & {
+        margin-top: 0;
     }
 
     &.is-visible {
@@ -31,7 +36,7 @@
     }
 
     &.is-quote {
-        margin-top: -12px;
+        margin-top: -12px !important;
     }
 }
 

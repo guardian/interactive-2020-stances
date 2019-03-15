@@ -24,10 +24,13 @@ module.exports = {
                         namedExports: {
                             'node_modules/jquery/dist/jquery.min.js': [ 'jquery' ]
                         }
-                    }),
-                    terser()
+                    })
                 ]
             };
+
+            if (config.specs.deploy) {
+                rollupOptions.plugins.push(terser());
+            }
 
             var bundle = await rollup.rollup(rollupOptions);
 

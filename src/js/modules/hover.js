@@ -22,28 +22,34 @@ export default {
     },
 
     showToolTipFor: function(el) {
-        var data = $(el).data();
         var type = $(el).hasClass('uit-radar__point-hotspot') ? 'radar' : 'candidate';
+        var data = $(el).data();
+        var top, left;
+        var pointPosition = $(el).offset();
+        var elementHeight = $(el).height();
+        var html = document.documentElement;
+        var pageOffset = $('.uit').offset().top;
 
         if (type === 'radar') {
             this.populateToolTipForRadar(data);
+            pointPosition = el.getBoundingClientRect();
+            top = pointPosition.top + window.pageYOffset - html.clientTop;
+            left = pointPosition.left + window.pageXOffset - html.clientLeft;
         } else {
             this.populateToolTipForCandidate(data);
+            top = pointPosition.top + elementHeight - pageOffset;
+            left = pointPosition.left
         }
-
-        var pointPosition = $(el).offset();
-        var elementHeight = $(el).height();
-        var pageOffset = $('.uit').offset().top;
 
         $('.uit-tooltip').attr('style', '');
 
         $('.uit-tooltip').css({
-            top: pointPosition.top + elementHeight - pageOffset,
+            top: top,
         });
 
         if ($(window).width() >= 780) {
             $('.uit-tooltip').css({
-                left: pointPosition.left
+                left: left
             });
         }
 

@@ -1,5 +1,5 @@
 // Javascript that is inline. Should be used for anything that needs to be immediate
-import jquery from 'jquery';
+import jquery from './vendor/jquery.js';
 window.$ = jquery;
 
 import legend from './modules/legend.js';

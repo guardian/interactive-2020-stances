@@ -22,7 +22,7 @@ export default {
     },
 
     showToolTipFor: function(el) {
-        var type = $(el).hasClass('uit-radar__point-hotspot') ? 'radar' : 'candidate';
+        var type = $(el).is('circle') ? 'radar' : 'candidate';
         var data = $(el).data();
         var top, left;
         var pointPosition = $(el).offset();

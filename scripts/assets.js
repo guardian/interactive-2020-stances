@@ -20,16 +20,14 @@ module.exports = {
                 input: './src/js/' + fileName + '.js',
                 plugins: [
                     resolve(),
-                    commonjs({
-                        namedExports: {
-                            'node_modules/jquery/dist/jquery.min.js': [ 'jquery' ]
-                        }
-                    })
+                    commonjs()
                 ]
             };
 
             if (config.specs.deploy) {
-                rollupOptions.plugins.push(terser());
+                rollupOptions.plugins.push(terser({
+                    sourcemap: false
+                }));
             }
 
             var bundle = await rollup.rollup(rollupOptions);

@@ -58,6 +58,8 @@ module.exports = {
             ])
         });
 
+        // console.log(data);
+
         svg.append('defs')
             .append('marker')
             .attr('id', 'arrow')

@@ -80,10 +80,14 @@ function sortCandidatesIntoIssues() {
 
     groups.forEach(function(group) {
         data.groups[group].forEach(function(candidate) {
-            data.issues[group].groups[candidate.stance].candidates.push({
-                candidate: candidate.candidate,
-                quote: fetchQuote(group, candidate)
-            });
+            if (candidate.stance && data.issues[group].groups[candidate.stance]) {
+                data.issues[group].groups[candidate.stance].candidates.push({
+                    candidate: candidate.candidate,
+                    quote: fetchQuote(group, candidate)
+                });
+            } else {
+                console.log(`Can\'t find ${candidate.candidate} in ${group}`)
+            }
         });
     });
 
@@ -143,7 +147,11 @@ function calculateChartValue(issue, value) {
     var total = values.length;
     var place = values.indexOf(value);
 
-    return Math.abs((place / total) - 1) + .25;
+    if (value) {
+        return Math.abs((place / total) - 1) + .25;
+    } else {
+        return 0
+    }
 }
 
 function duplicateBestAndWorstCandidates() {

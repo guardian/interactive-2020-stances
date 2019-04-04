@@ -26,6 +26,10 @@
         margin: -42px 0 0;
     }
 
+    @include mq(desktop) {
+        width: 320px;
+    }
+
     .ios &,
     .android & {
         margin-top: 0;
@@ -34,23 +38,10 @@
     &.is-visible {
         opacity: 1;
     }
-
-    &.is-quote {
-        margin-top: -12px !important;
-    }
 }
 
 .uit-tooltip__title svg {
     display: none;
-
-    .is-quote & {
-        margin-top: 0.33em;
-        margin-right: 0.4em;
-        display: inline;
-        fill: $c-black;
-        width: 1.2em;
-        float: left;
-    }
 }
 
 .uit-tooltip__title-copy {

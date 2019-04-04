@@ -80,15 +80,14 @@ export default {
     },
 
     populateToolTipForRadar: function(data) {
-        $('.uit-tooltip').removeClass('is-quote');
         $('.uit-tooltip__title-copy').text(data.group);
         $('.uit-tooltip__secondary').text(`This puts ${data.candidate} in ${this.convertValueToString(data.value)} when compared to fellow democrat presidential nominees on the issue of ${data.issue}`);
     },
 
     populateToolTipForCandidate: function(data) {
-        $('.uit-tooltip').addClass('is-quote');
-        $('.uit-tooltip__title-copy').text(data.quote);
-        $('.uit-tooltip__secondary').html(data.source);
+        console.log(data);
+        $('.uit-tooltip__title-copy').text(data.name);
+        $('.uit-tooltip__secondary').html(data.quote);
     },
 
     convertValueToString: function(value) {

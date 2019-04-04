@@ -28,6 +28,7 @@
 
                             </div>
                             <div class='uit-issue__candidiates'>
+                                {{#if candidates }}
                                 {{#each candidates}}
                                     <div class='uit-issue__candidate is-tooltippable' data-name='{{ candidate }}' data-quote='{{ quote.copy }}' data-source='{{ quote.source }}'>
                                         <img class='uit-issue__candidiate-image' src='{{ ../../../path }}/assets/{{ handlise candidate }}.png' />
@@ -36,6 +37,9 @@
                                         <div class='uit-issue__candidate-spacer'></div>
                                     {{/break}}
                                 {{/each}}
+                                {{else}}
+                                    <div class='uit-issue__candidate__none'>No candidates support this position</div>
+                                {{/if}}
                             </div>
                         </div>
                     {{/each}}

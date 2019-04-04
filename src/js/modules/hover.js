@@ -85,7 +85,6 @@ export default {
     },
 
     populateToolTipForCandidate: function(data) {
-        console.log(data);
         $('.uit-tooltip__title-copy').text(data.name);
         $('.uit-tooltip__secondary').html(data.quote);
     },

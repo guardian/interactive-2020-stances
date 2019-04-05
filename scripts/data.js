@@ -40,7 +40,8 @@ function sortResults() {
                 'gunControl': data[5],
                 'immigration': data[6],
                 'taxes': data[7],
-                'abortion': data[8]
+                'abortion': data[8],
+                'pacMoney': data[9]
             }
         }
     }

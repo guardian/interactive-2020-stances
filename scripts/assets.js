@@ -180,6 +180,7 @@ module.exports = {
         });
 
         handlebars.registerHelper('graphic', function(name) {
+            console.log(name);
             var fileName = '.charts/' + name.replace(/ /g, '-').toLowerCase() + '.svg';
 
             if (fs.existsSync(fileName)) {

@@ -4,7 +4,6 @@
             <h2 class='uit-subhead'>
                 <span class='uit-subhead__inner'>The Candidates</span>
             </h2>
-            {{> partials/legend }}
             <p>
                 Before we start, it's worth stating that this isn't an exact science. We started by taking the declared candidates and grouping them based on their stances on our list of issues. We used campaign speeches and materials when available and occasionally had to resort to interview quotes and voting records.
                 What we're left with is an approximate of how progressive or moderate candidates are when compared to their fellow candidiates. The larger area a candidate has, the more progressive they are.
@@ -13,61 +12,8 @@
 
 
         <div class='uit-candidates__overview'>
-            {{> partials/legend }}
             <div class='uit-candidates__candidates uit-candidates__candidates--main'>
-                {{#bestCandidate}}
-                    <div class='uit-candidates__candidate'>
-                        <h3 class='uit-candidates__label'>
-                            {{ name }}
-                            <span class='uit-candidates__label-title'>The most progressive candidate</span>
-                        </h3>
-                        <div class='uit-candidates__chart'>
-                            <div class='uit-candiates__avatar'>
-                                <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise name }}.png' />
-                            </div>
-                            {{{ graphic name }}}
-                        </div>
-                    </div>
-                {{/bestCandidate}}
-
-                {{#worstCandidate}}
-                    <div class='uit-candidates__candidate'>
-                        <h3 class='uit-candidates__label'>
-                            {{ name }}
-                            <span class='uit-candidates__label-title'>The most moderate candidate</span>
-                        </h3>
-                        <div class='uit-candidates__chart'>
-                            <div class='uit-candiates__avatar'>
-                                <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise name }}.png' />
-                            </div>
-                            {{{ graphic name }}}
-                        </div>
-                    </div>
-                {{/worstCandidate}}
-            </div>
-
-            <div class='uit-content'>
-                <a class='uit-button uit-candidates__button'>View all candidates {{> icons/down }} </a>
-            </div>
-
-            <div class='uit-candidates__candidates uit-candidates__candidates--hidden is-expandable'>
-                {{#each candidates}}
-                    {{#if skip}}
-                    {{else}}
-                    <div class='uit-candidates__candidate'>
-                        <h3 class='uit-candidates__label'>
-                            {{ @key }}
-                            <span class='uit-candidates__label-title'>{{ judge total }}</span>
-                        </h3>
-                        <div class='uit-candidates__chart'>
-                            <div class='uit-candiates__avatar'>
-                                <img class='uit-candidates__face' src='{{ ../path }}/assets/{{ handlise @key }}.png' />
-                            </div>
-                            {{{ graphic @key }}}
-                        </div>
-                    </div>
-                    {{/if}}
-                {{/each}}
+                {{{ graphic 'master' }}}
             </div>
         </div>
     </div>

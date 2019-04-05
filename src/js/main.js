@@ -2,14 +2,10 @@
 import jquery from './vendor/jquery.js';
 window.$ = jquery;
 
-import legend from './modules/legend.js';
 import share from './modules/share.js';
 import hover from './modules/hover.js';
-import expand from './modules/expand.js';
 import scroll from './modules/scroll.js';
 
-legend.init();
 share.init();
 hover.init();
-expand.init();
 scroll.init();

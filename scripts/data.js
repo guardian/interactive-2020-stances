@@ -154,7 +154,7 @@ function calculateChartValue(issue, value) {
     }
 }
 
-function duplicateBestAndWorstCandidates() {
+function prepDataForMasterChart() {
     var sortedCandidates = [];
 
     for (var candidate in data.candidates) {
@@ -168,16 +168,13 @@ function duplicateBestAndWorstCandidates() {
         return b.total - a.total;
     });
 
-    var bestCandidate = sortedCandidates[0].candidate;
-    var worstCandidate = sortedCandidates[sortedCandidates.length - 1].candidate
+    var orderedCandidateData = [];
 
-    data.bestCandidate = data.candidates[bestCandidate];
-    data.bestCandidate.name = bestCandidate;
-    data.candidates[bestCandidate].skip = true;
+    sortedCandidates.forEach(function(candidate, i) {
+        orderedCandidateData[candidate.candidate] = data.candidates[candidate.candidate];
+    });
 
-    data.worstCandidate = data.candidates[worstCandidate];
-    data.worstCandidate.name = worstCandidate;
-    data.candidates[worstCandidate].skip = true;
+    data.candidates = orderedCandidateData;
 
     return data;
 }
@@ -201,7 +198,7 @@ module.exports = function getData(config) {
             data = sortIssues();
             data = sortCandidatesIntoIssues();
             data = prepDataForRadarCharts();
-            data = duplicateBestAndWorstCandidates();
+            data = prepDataForMasterChart();
             delete data.groups;
 
             // console.log(JSON.stringify(data, null, 4));

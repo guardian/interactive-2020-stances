@@ -263,13 +263,23 @@
     border-radius: 32px;
     background-color: $c-light-blue;
     overflow: auto;
+    transition: background 0.3s linear;
+    cursor: pointer;
 
     @include mq(tablet) {
         height: 48px;
     }
 
+    &:hover {
+        background-color: $c-blue;
+    }
+
     &.is-selected {
         background-color: $c-yellow;
+
+        &:hover {
+            background-color: $c-dark-yellow;
+        }
     }
 }
 

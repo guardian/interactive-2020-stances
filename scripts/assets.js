@@ -92,7 +92,7 @@ module.exports = {
 
         handlebars.registerHelper('handlise', function(string) {
             if (string) {
-                return string.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /g, '-').toLowerCase();
+                return string.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /g, '-').replace('\'', '').toLowerCase();
             }
         });
 
@@ -181,7 +181,7 @@ module.exports = {
 
         handlebars.registerHelper('graphic', function(name) {
             console.log(name);
-            var fileName = '.charts/' + name.replace(/ /g, '-').toLowerCase() + '.svg';
+            var fileName = '.charts/' + name.replace(/ /g, '-').toLowerCase() + '.html';
 
             if (fs.existsSync(fileName)) {
                 return fs.readFileSync(fileName, 'utf8')

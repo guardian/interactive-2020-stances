@@ -13,11 +13,87 @@
     }
 }
 
+.uit-candidates__candidates {
+    position: relative;
+    padding-top: 33%;
+
+    @include mq(desktop) {
+        width: 940px;
+    }
+
+    @include mq(wide) {
+        width: 1020px;
+    }
+}
+
 .uit-candidates__candidate {
-    r: 20px;
-    fill: $c-light-blue;
+    position: absolute;
+    border-radius: 200px;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    background-color: $c-light-blue;
 
     @include mq(tablet) {
-        r: 31px;
+        width: 62px;
+        height: 62px;
     }
+}
+
+.uit-candidates__candidate-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.uit-candidates__rule {
+    position: relative;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 1px;
+    width: 100%;
+    background-color: $c-black;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        margin: auto;
+        width: 0;
+        height: 0;
+        top: -6px;
+        border-top: 7px solid transparent;
+        border-bottom: 6px solid transparent;
+    }
+
+    &:before {
+        border-right: 9px solid $c-black;
+    }
+
+    &:after {
+        right: 0;
+        border-left: 9px solid $c-black;
+    }
+}
+
+.uit-candidates__rule-label {
+    font-family: 'Guardian Sans Web';
+    font-size: 14px;
+    color: $c-black;
+    background-color: $c-white;
+    padding: 0 3px;
+    position: absolute;
+    white-space: nowrap;
+    left: 16px;
+    bottom: -11px;
+}
+
+.uit-candidates__rule-label--last {
+    right: 16px;
+    left: auto;
 }

@@ -4,8 +4,6 @@ window.$ = jquery;
 
 import share from './modules/share.js';
 import hover from './modules/hover.js';
-import scroll from './modules/scroll.js';
 
 share.init();
 hover.init();
-scroll.init();

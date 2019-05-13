@@ -124,7 +124,7 @@ module.exports = {
         handlebars.registerHelper('break', function(index, total, opts) {
             total = total.length;
 
-            if (total === 5 && index === 2) {
+            if (total === 6 && index === 3) {
                 return opts.fn(this);
             }
         });

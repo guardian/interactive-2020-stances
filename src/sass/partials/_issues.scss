@@ -101,7 +101,7 @@
 }
 
 .uit-issue__rule {
-    background-color: $c-black;
+    background-color: $c-light-grey;
 
     @include mq($until: desktop) {
         position: absolute;
@@ -147,12 +147,12 @@
         &:before {
             @include mq($until: desktop) {
                 top: 0;
-                border-bottom: 9px solid $c-black;
+                border-bottom: 9px solid $c-light-grey;
             }
 
             @include mq(desktop) {
                 left: 0;
-                border-right: 9px solid $c-black;
+                border-right: 9px solid $c-light-grey;
             }
         }
     }
@@ -161,12 +161,12 @@
         &:before {
             @include mq($until: desktop) {
                 bottom: 0;
-                border-top: 9px solid $c-black;
+                border-top: 9px solid $c-light-grey;
             }
 
             @include mq(desktop) {
                 right: 0;
-                border-left: 9px solid $c-black;
+                border-left: 9px solid $c-light-grey;
             }
         }
     }
@@ -175,7 +175,7 @@
 .uit-issue__rule-label {
     font-family: 'Guardian Sans Web';
     font-size: 14px;
-    color: $c-black;
+    color: $c-grey;
     position: absolute;
     white-space: nowrap;
 
@@ -247,8 +247,8 @@
     margin-bottom: 4px;
 
     @include mq(tablet) {
-        width: 62px;
-        height: 62px;
+        width: 48px;
+        height: 48px;
         margin-bottom: 8px;
     }
 }

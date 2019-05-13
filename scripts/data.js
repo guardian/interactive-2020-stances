@@ -84,6 +84,7 @@ function sortCandidatesIntoIssues() {
             if (candidate.stance && data.issues[group].groups[candidate.stance]) {
                 data.issues[group].groups[candidate.stance].candidates.push({
                     candidate: candidate.candidate,
+                    surname: candidate.candidate.split(' ')[1],
                     quote: fetchQuote(group, candidate)
                 });
             } else {

@@ -238,12 +238,21 @@
 
 .uit-issue__candidate-wrapper {
     width: 48px;
-    margin-right: 8px;
+    padding-right: 8px;
     overflow: hidden;
 
     @include mq(tablet) {
         width: 48px;
-        margin-bottom: 6px;
+        padding: 4px;
+        border: 1px solid transparent;
+    }
+
+    &:hover {
+        transition: border 0.3s linear;
+        position: relative;
+        z-index: 5;
+        border-color: $c-black;
+        border-bottom-color: $c-white;
     }
 }
 

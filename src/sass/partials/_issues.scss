@@ -267,6 +267,10 @@
     @include mq(tablet) {
         height: 48px;
     }
+
+    &.is-selected {
+        background-color: $c-yellow;
+    }
 }
 
 .uit-issue__candidate-name {
@@ -305,4 +309,5 @@
     right: 0;
     bottom: 0;
     width: 100%;
+    pointer-events: none;
 }

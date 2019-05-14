@@ -285,7 +285,8 @@
     font-size: 12px;
     line-height: 1.1;
     padding-top: 3px;
-    margin-bottom: 5px;
+    margin-bottom: 5px !important;
+    padding-bottom: 0px;
     text-align: center;
     color: $c-black;
 

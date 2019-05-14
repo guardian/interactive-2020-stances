@@ -7,7 +7,7 @@ export default {
 
     bindings: function() {
         $('.uit-issue__candidate').click(function(e) {
-            if ($(window).width >= 768) {
+            if ($(window).width() >= 768) {
                 this.selectCandidate(e.currentTarget);
             }
         }.bind(this));

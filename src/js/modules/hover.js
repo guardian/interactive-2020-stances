@@ -22,8 +22,6 @@ export default {
     },
 
     showToolTipFor: function(el) {
-        this.hideToolTip();
-
         var data = $(el).data();
         var top, left;
         var pointPosition = $(el).offset();
@@ -73,25 +71,8 @@ export default {
         $('.uit-tooltip__catch').removeClass('is-visible');
     },
 
-    populateToolTipForRadar: function(data) {
-        $('.uit-tooltip__title-copy').text(data.group);
-        $('.uit-tooltip__secondary').text(`This puts ${data.candidate} in ${this.convertValueToString(data.value)} when compared to fellow democrat presidential nominees on the issue of ${data.issue}`);
-    },
-
     populateToolTipForCandidate: function(data) {
         $('.uit-tooltip__title-copy').text(data.name);
         $('.uit-tooltip__secondary').html(data.quote);
-    },
-
-    convertValueToString: function(value) {
-        value = parseFloat(value);
-
-        if (value >= 1.2) {
-            return 'the most progressive group';
-        } else if (value <= 0.6) {
-            return 'the most moderate group';
-        } else {
-            return 'one of the in-betweenie groups';
-        }
     }
 };

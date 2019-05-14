@@ -34,12 +34,12 @@ function sortResults() {
             'issues': data[0],
             'candidates': data[1],
             'groups': {
-                'tech': data[2],
-                'climateChange': data[3],
-                'healthcare': data[4],
+                'climateChange': data[2],
+                'healthcare': data[3],
+                'taxes': data[4],
                 'gunControl': data[5],
-                'immigration': data[6],
-                'taxes': data[7],
+                'tech': data[6],
+                'immigration': data[7],
                 'abortion': data[8],
                 'pacMoney': data[9]
             }

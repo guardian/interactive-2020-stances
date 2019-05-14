@@ -84,7 +84,7 @@ function sortCandidatesIntoIssues() {
             if (candidate.stance && data.issues[group].groups[candidate.stance]) {
                 data.issues[group].groups[candidate.stance].candidates.push({
                     candidate: candidate.candidate,
-                    surname: candidate.candidate.split(' ')[1],
+                    surname: getSurname(candidate.candidate),
                     quote: fetchQuote(group, candidate)
                 });
             } else {
@@ -94,6 +94,16 @@ function sortCandidatesIntoIssues() {
     });
 
     return data;
+}
+
+function getSurname(candidate) {
+    candidate = candidate.split(' ')[1];
+
+    if (candidate === 'Hickenlooper') {
+        candidate = 'Hicken.';
+    }
+
+    return candidate;
 }
 
 function fetchQuote(issue, candidate) {

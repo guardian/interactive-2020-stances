@@ -94,7 +94,6 @@
     @include mq(desktop) {
         display: flex;
         flex-direction: column-reverse;
-        justify-content: start;
         flex: 1 1 0;
         padding-left: 0;
     }

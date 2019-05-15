@@ -5,12 +5,12 @@
     }
 
     p a {
-        color: $c-red;
-        border-bottom: 1px solid mix($c-red, $c-white, 20%);
+        color: $c-blue;
+        border-bottom: 1px solid mix($c-light-blue, $c-white, 20%);
         text-decoration: none;
 
         &:hover {
-            border-bottom-color: $c-red;
+            border-bottom-color: $c-light-blue;
         }
     }
 

@@ -41,7 +41,7 @@ function sortResults() {
                 'tech': data[6],
                 'immigration': data[7],
                 'abortion': data[8],
-                'pacMoney': data[9]
+                'campaignFinance': data[9]
             }
         }
     }

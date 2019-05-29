@@ -39,9 +39,10 @@ function sortResults() {
                 'taxes': data[4],
                 'gunControl': data[5],
                 'tech': data[6],
-                'immigration': data[7],
-                'abortion': data[8],
-                'campaignFinance': data[9]
+                'borderFunding': data[7],
+                'ice': data[8],
+                'abortion': data[9],
+                'campaignFinance': data[10]
             }
         }
     }

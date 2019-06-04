@@ -41,8 +41,9 @@ function sortResults() {
                 'tech': data[6],
                 'borderFunding': data[7],
                 'ice': data[8],
-                'abortion': data[9],
-                'campaignFinance': data[10]
+                'impeachment': data[9],
+                'abortion': data[10],
+                'campaignFinance': data[11]
             }
         }
     }
@@ -199,6 +200,13 @@ function appendConfigDrivenData(config) {
     return data;
 }
 
+function abolishICE() {
+    delete data.groups['ice'];
+    delete data.issues['ice'];
+
+    return data;
+}
+
 module.exports = function getData(config) {
     data = {};
 
@@ -212,6 +220,7 @@ module.exports = function getData(config) {
             data = sortCandidatesIntoIssues();
             data = prepDataForRadarCharts();
             data = prepDataForMasterChart();
+            data = abolishICE();
             delete data.groups;
 
             // console.log(JSON.stringify(data, null, 4));

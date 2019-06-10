@@ -7,6 +7,10 @@
                         <span class='uit-subhead__inner'>On {{ title }}</span>
                     </h2>
                     <p class='uit-issue__description'>{{ description }}</p>
+
+                    {{#if footNote}}
+                        <p class='uit-issue__no-stance'>{{ footNote }}</p>
+                    {{/if}}
                 </div>
 
                 <div class='uit-issue__groups'>

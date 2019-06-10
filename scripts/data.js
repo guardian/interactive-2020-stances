@@ -97,7 +97,12 @@ function sortCandidatesIntoIssues() {
                     quote: fetchQuote(group, candidate)
                 });
             } else {
-                console.log(`Can\'t find ${candidate.candidate} in ${group}`)
+                if (!data.issues[group].noStance) {
+                    data.issues[group].noStance = []
+                }
+
+                data.issues[group].noStance.push(candidate.candidate);
+                console.log(`Can\'t find ${candidate.candidate} in ${group}`);
             }
         });
     });
@@ -130,6 +135,29 @@ function fetchQuote(issue, candidate) {
     return null;
 }
 
+function createNoStanceSentences() {
+    var issues = Object.keys(data.issues);
+
+    issues.forEach(function(issue) {
+        if (data.issues[issue].noStance) {
+            var candidates = data.issues[issue].noStance;
+            if (candidates.length === 1) {
+                data.issues[issue].footNote = candidates + ' is yet to firmly declare their stance on this issue and has been omitted';
+            } else {
+                data.issues[issue].footNote = sentencifyList(candidates) + ' are yet to firmly declare stances on this issue and have been omitted';
+            }
+        }
+    });
+
+    return data;
+}
+
+function sentencifyList(array) {
+    var last = array.pop();
+
+    return array.join(', ') + ' and ' + last;
+}
+
 function appendConfigDrivenData(config) {
     data.path = config.absolutePath
     data.isLocal = !config.specs.deploy;
@@ -155,6 +183,7 @@ module.exports = function getData(config) {
             data = sortResults();
             data = sortIssues();
             data = sortCandidatesIntoIssues();
+            data = createNoStanceSentences();
             data = abolishICE();
             delete data.groups;
 

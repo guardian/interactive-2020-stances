@@ -38,7 +38,7 @@ function sortResults() {
                 'healthcare': data[3],
                 'taxes': data[4],
                 'gunControl': data[5],
-                'tech': data[6],
+                'bigTech': data[6],
                 'fundingForBorderSecurity': data[7],
                 'ice': data[8],
                 'impeachment': data[9],

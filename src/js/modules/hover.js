@@ -1,4 +1,4 @@
-let touchTimer;
+let touchTimer, reverseTimer;
 
 export default {
     init: function() {
@@ -6,7 +6,7 @@ export default {
     },
 
     bindings: function() {
-        $('.is-tooltippable').mouseover(function(e) {
+        $('.is-tooltippable').mouseenter(function(e) {
             this.showToolTipFor(e.currentTarget);
             this.setMouseOut(e.currentTarget);
         }.bind(this));
@@ -48,13 +48,16 @@ export default {
 
         if (isReversed) {
             $('.uit-tooltip').addClass('is-reversed');
+            clearTimeout(reverseTimer);
+        } else {
+            $('.uit-tooltip').removeClass('is-reversed');
         }
 
         $('.uit-tooltip').addClass('is-visible');
     },
 
     setMouseOut: function(el) {
-        $(el).one('mouseout', function() {
+        $(el).one('mouseleave', function(e) {
             this.hideToolTip()
         }.bind(this));
     },
@@ -72,8 +75,14 @@ export default {
 
     hideToolTip: function() {
         clearTimeout(touchTimer);
-        $('.uit-tooltip').removeClass('is-visible is-reversed');
+        $('.uit-tooltip').removeClass('is-visible');
         $('.uit-tooltip__catch').removeClass('is-visible');
+
+        clearTimeout(reverseTimer);
+
+        reverseTimer = setTimeout(function() {
+            $('.uit-tooltip').removeClass('is-reversed');
+        }, 400);
     },
 
     populateToolTipForCandidate: function(data) {

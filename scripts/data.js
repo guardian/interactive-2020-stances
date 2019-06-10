@@ -34,12 +34,12 @@ function sortResults() {
             'issues': data[0],
             'candidates': data[1],
             'groups': {
-                'climateChange': data[2],
+                'climateEmergency': data[2],
                 'healthcare': data[3],
                 'taxes': data[4],
                 'gunControl': data[5],
                 'tech': data[6],
-                'borderFunding': data[7],
+                'fundingForBorderSecurity': data[7],
                 'ice': data[8],
                 'impeachment': data[9],
                 'abortion': data[10],
@@ -50,6 +50,7 @@ function sortResults() {
 
     return data;
 }
+
 
 function sortIssues() {
     var issues = {};
@@ -82,6 +83,12 @@ function sortCandidatesIntoIssues() {
     var groups = Object.keys(data.groups);
 
     groups.forEach(function(group) {
+        data.groups[group].sort(function(a, b) {
+            if (a.candidate < b.candidate) return -1;
+            if (a.candidate > b.candidate) return 1;
+            return 0;
+        });
+
         data.groups[group].forEach(function(candidate) {
             if (candidate.stance && data.issues[group].groups[candidate.stance]) {
                 data.issues[group].groups[candidate.stance].candidates.push({
@@ -123,76 +130,6 @@ function fetchQuote(issue, candidate) {
     return null;
 }
 
-function prepDataForRadarCharts() {
-    var chartsData = {};
-    var issues = Object.keys(data.issues);
-    var groups = Object.keys(data.groups);
-
-    data.candidates.forEach(function(candidate) {
-        chartsData[candidate.candidate] = {};
-        chartsData[candidate.candidate].data = [];
-
-        var total = 0;
-
-        issues.forEach(function(issue) {
-            data.groups[issue].forEach(function(stance) {
-                if (stance.candidate === candidate.candidate) {
-                    total += calculateChartValue(issue, stance.stance)
-                    chartsData[candidate.candidate].data.push({
-                        axis: issue,
-                        group: stance.stance,
-                        title: data.issues[issue].title,
-                        value: calculateChartValue(issue, stance.stance)
-                    });
-                }
-            }.bind(this));
-        }.bind(this));
-
-        chartsData[candidate.candidate].total = total;
-    }.bind(this));
-
-    data.candidates = chartsData;
-
-    return data;
-}
-
-function calculateChartValue(issue, value) {
-    var values = Object.keys(data.issues[issue].groups)
-    var total = values.length;
-    var place = values.indexOf(value);
-
-    if (value) {
-        return Math.abs((place / total) - 1) + .25;
-    } else {
-        return 0
-    }
-}
-
-function prepDataForMasterChart() {
-    var sortedCandidates = [];
-
-    for (var candidate in data.candidates) {
-        sortedCandidates.push({
-            candidate: candidate,
-            total: data.candidates[candidate].total
-        });
-    }
-
-    sortedCandidates.sort(function(a, b) {
-        return b.total - a.total;
-    });
-
-    var orderedCandidateData = [];
-
-    sortedCandidates.forEach(function(candidate, i) {
-        orderedCandidateData[candidate.candidate] = data.candidates[candidate.candidate];
-    });
-
-    data.candidates = orderedCandidateData;
-
-    return data;
-}
-
 function appendConfigDrivenData(config) {
     data.path = config.absolutePath
     data.isLocal = !config.specs.deploy;
@@ -218,12 +155,10 @@ module.exports = function getData(config) {
             data = sortResults();
             data = sortIssues();
             data = sortCandidatesIntoIssues();
-            data = prepDataForRadarCharts();
-            data = prepDataForMasterChart();
             data = abolishICE();
             delete data.groups;
 
-            // console.log(JSON.stringify(data, null, 4));
+            console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

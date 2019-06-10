@@ -42,6 +42,15 @@
         }
     }
 
+    &.is-reversed {
+        @include mq(tablet) {
+            &:before {
+                left: auto;
+                right: -1px;
+            }
+        }
+    }
+
     .ios &,
     .android & {
         margin-top: 0;

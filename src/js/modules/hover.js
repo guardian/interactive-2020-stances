@@ -28,6 +28,7 @@ export default {
         var elementHeight = $(el).height();
         var html = document.documentElement;
         var pageOffset = $('.uit').offset().top;
+        var isReversed = $(el).parent().parent().hasClass('uit-issue__group--last');
 
         this.populateToolTipForCandidate(data);
         top = pointPosition.top + elementHeight - pageOffset;
@@ -41,8 +42,12 @@ export default {
 
         if ($(window).width() >= 780) {
             $('.uit-tooltip').css({
-                left: left
+                left: isReversed ? left - $('.uit-tooltip').width() + 42 : left
             });
+        }
+
+        if (isReversed) {
+            $('.uit-tooltip').addClass('is-reversed');
         }
 
         $('.uit-tooltip').addClass('is-visible');
@@ -67,7 +72,7 @@ export default {
 
     hideToolTip: function() {
         clearTimeout(touchTimer);
-        $('.uit-tooltip').removeClass('is-visible');
+        $('.uit-tooltip').removeClass('is-visible is-reversed');
         $('.uit-tooltip__catch').removeClass('is-visible');
     },
 

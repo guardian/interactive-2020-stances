@@ -158,7 +158,7 @@ module.exports = function getData(config) {
             data = abolishICE();
             delete data.groups;
 
-            console.log(JSON.stringify(data, null, 4));
+            // console.log(JSON.stringify(data, null, 4));
 
             isDone = true;
         });

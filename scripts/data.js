@@ -41,9 +41,8 @@ function sortResults() {
                 'bigTech': data[6],
                 'fundingForBorderSecurity': data[7],
                 'ice': data[8],
-                'impeachment': data[9],
-                'abortion': data[10],
-                'campaignFinance': data[11]
+                'abortion': data[9],
+                'campaignFinance': data[10]
             }
         }
     }
